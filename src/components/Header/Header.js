@@ -12,28 +12,44 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.css';
 import Link from '../Link';
 import Navigation from '../Navigation';
-import logoUrl from './logo-small.png';
-import logoUrl2x from './logo-small@2x.png';
+import logoUrl from './logo.png';
 
 class Header extends React.Component {
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <Navigation />
-          <Link className={s.brand} to="/">
-            <img
-              src={logoUrl}
-              srcSet={`${logoUrl2x} 2x`}
-              width="38"
-              height="38"
-              alt="React"
-            />
-            <span className={s.brandTxt}>Your Company</span>
-          </Link>
+          <div className={s.brand}>
+            <Link to="/">
+              <img className={s.brandLogoImg}
+                src={logoUrl}
+                alt="weater today"
+              />
+            </Link>
+          </div>
           <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
+            <h1 className={s.bannerTitle}>Weather today</h1>
+            <p className={s.bannerDesc}>Current weather forecast for every day</p>
+          </div>
+          <div className={s.contacts}>
+            <p className={s.contactsTitle}>Contact us:</p>
+            <div className={s.contactsBlock}>
+              <div className={s.contactsBlockName}>
+                <span>phone:</span>
+              </div>
+              <div className={s.contactsBlockContent}>
+                <span>+7 (999) 999-99-98</span>
+                <span>+7 (999) 999-99-99</span>
+              </div>
+            </div>
+            <div className={s.contactsBlock}>
+              <div className={s.contactsBlockName}>
+                <span>e-mail:</span>
+              </div>
+              <div className={s.contactsBlockContent}>
+                <span>support@app.com</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
