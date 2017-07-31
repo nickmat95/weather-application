@@ -36,6 +36,7 @@ class Html extends React.Component {
 
   render() {
     const { title, description, styles, scripts, app, children } = this.props;
+
     return (
       <html className="no-js" lang="en">
         <head>
@@ -49,7 +50,7 @@ class Html extends React.Component {
           {scripts.map(script =>
             <link key={script} rel="preload" href={script} as="script" />,
           )}
-          <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+          <link rel="browser-logo" href="browser-logo.png" />
           {styles.map(style =>
             <style
               key={style.id}

@@ -20,30 +20,44 @@
   max-width: var(--max-content-width);
 }
 
-.newsItem {
-  margin: 0 0 2rem;
+.townWeatherItem {
+  display: inline-block;
+  width: 27%;
+  margin: 3% 0 0 3%;
+  padding: 13px;
+  border: 3px solid #373277;
+  border-radius: 30px;
 }
 
-.newsTitle {
-  font-size: 1.5rem;
-}
-
-.newsDesc {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-size: 1.125rem;
+.townWeatherItem { 
+  p {
+    float: left;
+    margin: 0;
   }
 
-  pre {
-    white-space: pre-wrap;
-    font-size: 0.875rem;
+  .weatherVisual {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 0 10px 5px 0;
+    background: grey;
+  }
+   .town {
+    width: 65%;
+    margin: 0 0 15px 0;
+    font-weight: bold;
   }
 
-  img {
-    max-width: 100%;
+  .tempDay {
+    font-weight: bold;
+    font-size: 1.6em;
+  }
+
+  .tempNight {
+
+  }
+
+  .weatherItem {
+
   }
 }
