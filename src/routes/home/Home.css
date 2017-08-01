@@ -20,6 +20,13 @@
   max-width: var(--max-content-width);
 }
 
+
+.todayDate {
+  padding: 0 0 0 3%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 .townWeatherItem {
   display: inline-block;
   width: 27%;

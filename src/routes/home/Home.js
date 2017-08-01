@@ -85,6 +85,12 @@ let weatherForecast = [
   }
 ];
 
+let todayDate = (() => {
+  let date = new Date();
+
+  return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric', });
+});
+
 class TownWeather extends React.Component {
     render() {
       return(
@@ -110,6 +116,7 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
+        <p className={s.todayDate}>{todayDate()}</p>
         {
           weatherForecast.map(el => <TownWeather 
             key={el.id}
