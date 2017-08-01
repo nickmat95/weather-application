@@ -91,14 +91,14 @@ class TownWeather extends React.Component {
         <div className={s.townWeatherItem}>
           <div className={s.weatherVisual}></div>
           <p className={s.town}>{this.props.town}</p>
-          <p className={s.tempDay}>{this.props.temperatureDay}</p>
-          <p className={s.tempNight}>{this.props.temperatureNight}</p>
-          <p className={s.weatherItem}>temperature water: {this.props.temperatureWater}</p>
-          <p className={s.weatherItem}>cloudiness: {this.props.cloudiness}</p>
-          <p className={s.weatherItem}>precipitation: {this.props.precipitation}</p>
-          <p className={s.weatherItem}>pressure: {this.props.pressure}</p>
-          <p className={s.weatherItem}>humidity: {this.props.humidity}</p>
-          <p className={s.weatherItem}>wind speed: {this.props.windSpeed}</p>
+          <p className={s.tempDay} title="day temperature">{this.props.temperatureDay}</p>
+          <p className={s.tempNight} title="night temperature">{this.props.temperatureNight}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
+          <p className={s.weatherItem}><span className={s.weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
         </div>
       );
     }
