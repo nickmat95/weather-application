@@ -85,40 +85,78 @@ let weatherForecast = [
   }
 ];
 
-let todayDate = (() => {
-  let date = new Date();
 
-  return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric', });
-});
 
 class TownWeather extends React.Component {
-    render() {
-      return(
-        <div className={s.townWeatherItem}>
-          <div className={s.weatherVisual}></div>
-          <p className={s.town}>{this.props.town}</p>
-          <p className={s.tempDay} title="day temperature">{this.props.temperatureDay}</p>
-          <p className={s.tempNight} title="night temperature">{this.props.temperatureNight}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
-          <p className={s.weatherItem}><span className={s.weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
-        </div>
-      );
-    }
-  }
+  render() {
+     return(
+       <div className={s.townWeatherItem}>
+         <div className={s.weatherVisual}></div>
+         <p className={s.town}>{this.props.town}</p>
+         <p className={s.tempDay} title="day temperature">{this.props.temperatureDay}</p>
+         <p className={s.tempNight} title="night temperature">{this.props.temperatureNight}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
+         <p className={s.weatherItem}><span className={s.weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
+       </div>
+     );
+   }
+}
 
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayedWeatherItems: weatherForecast
+    };
+  }
+
+  todayDate() {
+    let date = new Date();
+
+    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
+  }
+
+  /*getInitialState() {
+    return {
+      displayedWeatherItems: weatherForecast
+    };
+  }*/
+
+  townFilter = (event) => {
+    
+    let filterQuery = event.target.value.toLowerCase();
+    let displayedWeatherItems = weatherForecast.filter(el => {
+      let filterVal = el.town.toLowerCase();
+      return filterVal.indexOf(filterQuery) !== -1;
+    });
+
+    this.setState({
+        displayedWeatherItems: displayedWeatherItems
+    });
+
+  }
 
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
-        <p className={s.todayDate}>{todayDate()}</p>
+        <p className={s.todayDate}>{this.todayDate()}</p>
+        <div className={s.filters}>
+          <div className={s.filterItem}>
+            <input type="text" placeholder="enter city" onChange={this.townFilter} />
+          </div>
+          <div className={s.filterItem}>
+            <input type="text" placeholder="enter region" />
+          </div>
+        </div>
         {
-          weatherForecast.map(el => <TownWeather 
+          this.state.displayedWeatherItems.map(el => <TownWeather 
             key={el.id}
             town={el.town}
             regionId={el.regionId}
