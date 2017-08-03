@@ -1,11 +1,3 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
 
 @import '../variables.css';
 
@@ -26,14 +18,18 @@
   float: right;
   width: 165px;
   text-align: left;
+}
+
+.getInfo__text {
   font-size: 0.8em;
 }
 
-.gismeteoLink {
+.getInfo__gismeteoLink {
   color: turquoise;
+  font-size: 0.8em;
   text-decoration: none;
 }
 
-.gismeteoLink:hover {
+.getInfo__gismeteoLink:hover {
   text-decoration: underline;
 }
