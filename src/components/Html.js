@@ -50,7 +50,7 @@ class Html extends React.Component {
           {scripts.map(script =>
             <link key={script} rel="preload" href={script} as="script" />,
           )}
-          <link rel="browser-logo" href="browser-logo.png" />
+          <link rel="icon" href="favicon.ico" />
           {styles.map(style =>
             <style
               key={style.id}

@@ -27,11 +27,7 @@
   font-weight: bold;
 }
 
-.filters {
-
-}
-
-.filterItem {
+.filters__item {
   display: inline-block;
   width: 30%;
   margin: 0 0 0 3%;
@@ -47,44 +43,47 @@
   box-shadow: 10px 10px 10px #666;
 }
 
-.townWeatherItem { 
-  p {
-    float: left;
-    margin: 0;
-  }
+.townWeatherItem__town,
+.townWeatherItem__dayTemp,
+.townWeatherItem__nightTemp,
+.townWeatherItem__weatherItem {
+  float: left;
+  margin: 0;
+}
 
-  .weatherVisual {
-    float: left;
-    width: 65px;
-    height: 65px;
-    margin: 0 10px 5px 0;
-    background: #666;
-    border-radius: 15px;
-  }
-   .town {
-    width: 65%;
-    margin: 0 0 15px 0;
-    font-weight: bold;
-  }
+.townWeatherItem__icon {
+  float: left;
+  width: 65px;
+  height: 65px;
+  margin: 0 10px 5px 0;
+  background: #666;
+  border-radius: 15px;
+}
 
-  .tempDay {
-    font-weight: bold;
-    font-size: 1.5em;
-    cursor: pointer;
-  }
+.townWeatherItem__town {
+  width: 65%;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+}
 
-  .tempNight {
-    font-weight: bold;
-    margin: 7px 0 0 10px;
-    color: #666;
-    cursor: pointer;
-  }
+.townWeatherItem__dayTemp {
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+}
 
-  .weatherItem {
-    width: 100%;
-    font-size: 0.8em;
-  }
-  .weatherItemTitle {
-    color: #666;
-  }
+.townWeatherItem__nightTemp {
+  font-weight: bold;
+  margin: 7px 0 0 10px;
+  color: #666;
+  cursor: pointer;
+}
+
+.townWeatherItem__weatherItem {
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.townWeatherItem__weatherItemTitle {
+  color: #666;
 }

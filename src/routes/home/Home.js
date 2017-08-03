@@ -91,16 +91,16 @@ class TownWeather extends React.Component {
   render() {
      return(
        <div className={s.townWeatherItem}>
-         <div className={s.weatherVisual}></div>
-         <p className={s.town}>{this.props.town}</p>
-         <p className={s.tempDay} title="day temperature">{this.props.temperatureDay}</p>
-         <p className={s.tempNight} title="night temperature">{this.props.temperatureNight}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
-         <p className={s.weatherItem}><span className={s.weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
+         <div className={s.townWeatherItem__icon}></div>
+         <p className={s.townWeatherItem__town}>{this.props.town}</p>
+         <p className={s.townWeatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
+         <p className={s.townWeatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
        </div>
      );
    }
@@ -122,11 +122,6 @@ class Home extends React.Component {
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-  /*getInitialState() {
-    return {
-      displayedWeatherItems: weatherForecast
-    };
-  }*/
 
   townFilter = (event) => {
     
@@ -148,10 +143,10 @@ class Home extends React.Component {
         <div className={s.container}>
         <p className={s.todayDate}>{this.todayDate()}</p>
         <div className={s.filters}>
-          <div className={s.filterItem}>
+          <div className={s.filters__item}>
             <input type="text" placeholder="enter city" onChange={this.townFilter} />
           </div>
-          <div className={s.filterItem}>
+          <div className={s.filters__item}>
             <input type="text" placeholder="enter region" />
           </div>
         </div>
