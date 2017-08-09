@@ -98,6 +98,49 @@ class TownWeather extends React.Component {
    }
 }
 
+class TownFilterInput extends React.Component {
+
+  stretch = (event) => {
+    let currentBlock = event.target;
+
+    let currentBlockWidth = currentBlock.offsetWidth;
+    let parentPaddLeft = parseInt(getComputedStyle(currentBlock.parentNode).paddingLeft);
+    let parentPaddRight = parseInt(getComputedStyle(currentBlock.parentNode).paddingRight);
+    let parentBlockWidth = currentBlock.parentNode.offsetWidth - parentPaddLeft - parentPaddRight - 16;
+
+    let timer = setInterval(() => {
+      if (currentBlockWidth < parentBlockWidth && currentBlock==document.activeElement) {
+        currentBlockWidth ++;
+        currentBlock.style.width = currentBlockWidth + 'px';
+      } else {
+        clearInterval(timer);
+      }
+    }, 3);
+  }
+
+  compression = (event) => {
+    let currentBlock = event.target;
+    let currentBlockWidth =  currentBlock.offsetWidth;
+    let basicBlockWidth = parseInt(currentBlock.getAttribute('data-basic-width'));
+
+    while(basicBlockWidth - 16 < currentBlockWidth) {
+      currentBlockWidth--;
+      currentBlock.style.width = currentBlockWidth + 'px';
+    }
+  }
+
+  getWidth = () => {
+    return 242;
+  }
+
+  render() {
+    let home = new Home();
+    return (
+        <input type="text" placeholder="enter city" data-basic-width={this.getWidth()} onChange={home.townFilter} onFocus={this.stretch} onBlur={this.compression}/>
+    );
+  }
+}
+
 class Home extends React.Component {
 
   constructor(props) {
@@ -114,9 +157,7 @@ class Home extends React.Component {
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-
   townFilter = (event) => {
-    
     let filterQuery = event.target.value.toLowerCase();
     let displayedWeatherItems = weatherForecast.filter(el => {
       let filterVal = el.town.toLowerCase();
@@ -127,7 +168,7 @@ class Home extends React.Component {
         displayedWeatherItems: displayedWeatherItems
     });
 
-  }
+  }  
 
   render() {
     return (
@@ -136,7 +177,9 @@ class Home extends React.Component {
         <p className={s.todayDate}>{this.todayDate()}</p>
         <div className={s.filters}>
           <div className={s.filters__item}>
-            <input type="text" placeholder="enter city" onChange={this.townFilter} />
+          {
+            <TownFilterInput />
+          }
           </div>
           <div className={s.filters__item}>
             <input type="text" placeholder="enter region" />
