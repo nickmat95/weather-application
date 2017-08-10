@@ -80,6 +80,10 @@ let weatherForecast = [
 
 class FilterInput extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   placeholderText() {
 
     let text = 'enter value';
@@ -93,9 +97,13 @@ class FilterInput extends React.Component {
     return text;
   }
 
+  streach() {
+
+  }
+
   render() {
     return (
-        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} />
+        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onFocus={this.streach} />
     );
   }
 }

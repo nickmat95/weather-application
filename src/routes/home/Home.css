@@ -34,16 +34,19 @@
 }
 
 .filters__input {
+  width: 60%;
   padding: 3px;
   border: 2px solid #373277;
   border-radius: 8px;
   box-shadow: 5px 4px 16px #666;
+  transition-property: width;
+  transition-duration: 0.8s;
   outline: none;
 }
 
 .filters__input:focus {
+  width: 97%;
   box-shadow: 1px 4px 15px #2256D6;
-  transition: 0.5s;
 }
 
 .townWeatherItem {
