@@ -95,7 +95,7 @@ class FilterInput extends React.Component {
 
   render() {
     return (
-        <input type="text" placeholder={this.placeholderText()} />
+        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} />
     );
   }
 }
