@@ -78,8 +78,29 @@ let weatherForecast = [
 ];
 
 
+class FilterInput extends React.Component {
 
-class TownWeather extends React.Component {
+  placeholderText() {
+
+    let text = 'enter value';
+
+    if(this.props.filterID == 1) {
+      text = 'enter city';
+    } else if (this.props.filterID == 2) {
+      text = 'enter region';
+    }
+
+    return text;
+  }
+
+  render() {
+    return (
+        <input type="text" placeholder={this.placeholderText()} />
+    );
+  }
+}
+
+class TownWeatherItem extends React.Component {
   render() {
      return(
        <div className={s.townWeatherItem}>
@@ -98,45 +119,48 @@ class TownWeather extends React.Component {
    }
 }
 
-class TownFilterInput extends React.Component {
+class TownWeatherList extends React.Component {
 
-  stretch = (event) => {
-    let currentBlock = event.target;
+  constructor(props) {
+    super(props);
 
-    let currentBlockWidth = currentBlock.offsetWidth;
-    let parentPaddLeft = parseInt(getComputedStyle(currentBlock.parentNode).paddingLeft);
-    let parentPaddRight = parseInt(getComputedStyle(currentBlock.parentNode).paddingRight);
-    let parentBlockWidth = currentBlock.parentNode.offsetWidth - parentPaddLeft - parentPaddRight - 16;
-
-    let timer = setInterval(() => {
-      if (currentBlockWidth < parentBlockWidth && currentBlock==document.activeElement) {
-        currentBlockWidth ++;
-        currentBlock.style.width = currentBlockWidth + 'px';
-      } else {
-        clearInterval(timer);
-      }
-    }, 3);
+    this.state = {
+      displayedWeatherItems: weatherForecast
+    };
   }
 
-  compression = (event) => {
-    let currentBlock = event.target;
-    let currentBlockWidth =  currentBlock.offsetWidth;
-    let basicBlockWidth = parseInt(currentBlock.getAttribute('data-basic-width'));
+  townFilter = (event) => {
+      let filterQuery = event.target.value.toLowerCase();
+      let displayedWeatherItems = weatherForecast.filter(el => {
+        let filterVal = el.town.toLowerCase();
+        return filterVal.indexOf(filterQuery) !== -1;
+      });
 
-    while(basicBlockWidth - 16 < currentBlockWidth) {
-      currentBlockWidth--;
-      currentBlock.style.width = currentBlockWidth + 'px';
-    }
-  }
+      this.setState({
+          displayedWeatherItems: displayedWeatherItems
+      });
 
-  getWidth = () => {
-    return 242;
-  }
+  }  
 
   render() {
-    let home = new Home();
-    return (
-        <input type="text" placeholder="enter city" data-basic-width={this.getWidth()} onChange={home.townFilter} onFocus={this.stretch} onBlur={this.compression}/>
+    return(
+      <div className={s.townWeatherList}>
+        {
+          this.state.displayedWeatherItems.map(el => <TownWeatherItem 
+            key={el.id}
+            town={el.town}
+            regionId={el.regionId}
+            temperatureDay={el.temperatureDay}
+            temperatureNight={el.temperatureNight}
+            temperatureWater={el.temperatureWater}
+            cloudiness={el.cloudiness}
+            precipitation={el.precipitation}
+            pressure={el.pressure}
+            humidity={el.humidity}
+            windSpeed={el.windSpeed}
+            />)
+        }
+      </div>
     );
   }
 }
@@ -151,54 +175,29 @@ class Home extends React.Component {
     };
   }
 
-  todayDate() {
+  todayDate = () => {
     let date = new Date();
 
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-  townFilter = (event) => {
-    let filterQuery = event.target.value.toLowerCase();
-    let displayedWeatherItems = weatherForecast.filter(el => {
-      let filterVal = el.town.toLowerCase();
-      return filterVal.indexOf(filterQuery) !== -1;
-    });
-
-    this.setState({
-        displayedWeatherItems: displayedWeatherItems
-    });
-
-  }  
-
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
-        <p className={s.todayDate}>{this.todayDate()}</p>
+        <p className={s.todayDate}>{this.todayDate}</p>
         <div className={s.filters}>
           <div className={s.filters__item}>
           {
-            <TownFilterInput />
+            <FilterInput filterID="1"/>
           }
           </div>
           <div className={s.filters__item}>
-            <input type="text" placeholder="enter region" />
+            <FilterInput filterID="2"/>
           </div>
         </div>
         {
-          this.state.displayedWeatherItems.map(el => <TownWeather 
-            key={el.id}
-            town={el.town}
-            regionId={el.regionId}
-            temperatureDay={el.temperatureDay}
-            temperatureNight={el.temperatureNight}
-            temperatureWater={el.temperatureWater}
-            cloudiness={el.cloudiness}
-            precipitation={el.precipitation}
-            pressure={el.pressure}
-            humidity={el.humidity}
-            windSpeed={el.windSpeed}
-            />)
+          <TownWeatherList />
         }
         </div>
       </div>

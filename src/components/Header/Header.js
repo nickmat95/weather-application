@@ -11,7 +11,7 @@ class Header extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <div classname={s.header}>
+          <div className={s.header}>
             <div className={s.brand}>
               <Link to="/">
                 <img className={s.brand__logoImg}
