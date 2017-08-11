@@ -82,6 +82,36 @@ class FilterInput extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      filterEvent: ''
+    };
+
+    this.townFilter = this.townFilter;
+  } 
+
+  townFilterUpdate = (event) => {
+      
+    this.setState({filterEvent: event.target.value});
+
+    /**
+     * TO DO. bug in this.state.filterEvent! Check in console
+    */
+
+    let filterValue = this.state.filterEvent;
+
+    this.props.updateFilter(filterValue);
+
+   //   let filterQuery = this.state.filterEvent.toLowerCase();
+
+     /*let displayedWeatherItems = weatherForecast.filter(el => {
+        let filterVal = el.town.toLowerCase();
+        return filterVal.indexOf(filterQuery) !== -1;
+      });
+
+      this.setState({
+          displayedWeatherItems: displayedWeatherItems
+      });*/
   }
 
   placeholderText() {
@@ -97,13 +127,9 @@ class FilterInput extends React.Component {
     return text;
   }
 
-  streach() {
-
-  }
-
   render() {
     return (
-        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onFocus={this.streach} />
+        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.townFilterUpdate}/>
     );
   }
 }
@@ -127,7 +153,7 @@ class TownWeatherItem extends React.Component {
    }
 }
 
-class TownWeatherList extends React.Component {
+/*class TownWeatherList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -135,24 +161,63 @@ class TownWeatherList extends React.Component {
     this.state = {
       displayedWeatherItems: weatherForecast
     };
+  } 
+
+  render() {
+    return(
+      
+    );
+  }
+}*/
+
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayedWeatherItems: weatherForecast,
+      nameFilter: ''
+    };
+  } 
+
+  todayDate = () => {
+    let date = new Date();
+
+    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-  townFilter = (event) => {
-      let filterQuery = event.target.value.toLowerCase();
-      let displayedWeatherItems = weatherForecast.filter(el => {
+  townFilterUpdate = (filterValue) => {
+    this.setState({nameFilter: filterValue});
+
+    let displayedWeatherItems = weatherForecast.filter(el => {
         let filterVal = el.town.toLowerCase();
-        return filterVal.indexOf(filterQuery) !== -1;
+        return filterVal.indexOf(filterValue) !== -1;
       });
 
       this.setState({
           displayedWeatherItems: displayedWeatherItems
       });
-
-  }  
+  }
 
   render() {
-    return(
-      <div className={s.townWeatherList}>
+    return (
+      <div className={s.root}>
+        <div className={s.container}>
+        <p className={s.todayDate}>{this.todayDate}</p>
+        <div className={s.filters}>
+          <div className={s.filters__item}>
+          {
+            <FilterInput filterID="1" updateFilter={this.townFilterUpdate} />
+          }
+          </div>
+          <div className={s.filters__item}>
+          {
+            <FilterInput filterID="2" />
+          }
+          </div>
+        </div>
+        <div className={s.townWeatherList}>
         {
           this.state.displayedWeatherItems.map(el => <TownWeatherItem 
             key={el.id}
@@ -169,44 +234,6 @@ class TownWeatherList extends React.Component {
             />)
         }
       </div>
-    );
-  }
-}
-
-class Home extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      displayedWeatherItems: weatherForecast
-    };
-  }
-
-  todayDate = () => {
-    let date = new Date();
-
-    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
-  }
-
-  render() {
-    return (
-      <div className={s.root}>
-        <div className={s.container}>
-        <p className={s.todayDate}>{this.todayDate}</p>
-        <div className={s.filters}>
-          <div className={s.filters__item}>
-          {
-            <FilterInput filterID="1"/>
-          }
-          </div>
-          <div className={s.filters__item}>
-            <FilterInput filterID="2"/>
-          </div>
-        </div>
-        {
-          <TownWeatherList />
-        }
         </div>
       </div>
     );
