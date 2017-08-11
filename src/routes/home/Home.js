@@ -17,7 +17,7 @@ let weatherForecast = [
     pressure: '745 mmHg',
     humidity: '50%',
     windSpeed: '2 m/s',
-    image: ''
+    image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
     id: 12,
@@ -31,7 +31,7 @@ let weatherForecast = [
     pressure: '745 mmHg',
     humidity: '50%',
     windSpeed: '2 m/s',
-    image: ''
+    image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
     id: 13,
@@ -45,7 +45,7 @@ let weatherForecast = [
     pressure: '745 mmHg',
     humidity: '50%',
     windSpeed: '2 m/s',
-    image: ''
+    image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
     id: 21,
@@ -59,7 +59,7 @@ let weatherForecast = [
     pressure: '745 mmHg',
     humidity: '50%',
     windSpeed: '2 m/s',
-    image: ''
+    image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
     id: 22,
@@ -73,7 +73,7 @@ let weatherForecast = [
     pressure: '745 mmHg',
     humidity: '50%',
     windSpeed: '2 m/s',
-    image: ''
+    image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   }
 ];
 
@@ -114,7 +114,9 @@ class TownWeatherItem extends React.Component {
   render() {
      return(
        <div className={s.townWeatherItem}>
-         <div className={s.townWeatherItem__icon}></div>
+         <div className={s.townWeatherItem__iconWrap}>
+            <img className={s.townWeatherItem__icon} src={this.props.img} />
+         </div>
          <p className={s.townWeatherItem__town}>{this.props.town}</p>
          <p className={s.townWeatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
          <p className={s.townWeatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
@@ -207,6 +209,7 @@ class Home extends React.Component {
             pressure={el.pressure}
             humidity={el.humidity}
             windSpeed={el.windSpeed}
+            img = {el.image}
             />)
         }
       </div>
