@@ -80,38 +80,14 @@ let weatherForecast = [
 
 class FilterInput extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filterEvent: ''
-    };
-
-    this.townFilter = this.townFilter;
-  } 
-
   townFilterUpdate = (event) => {
-      
-    this.setState({filterEvent: event.target.value});
-
     /**
-     * TO DO. bug in this.state.filterEvent! Check in console
+     * TO DO
     */
 
-    let filterValue = this.state.filterEvent;
+    let filterValue = event.target.value;
 
     this.props.updateFilter(filterValue);
-
-   //   let filterQuery = this.state.filterEvent.toLowerCase();
-
-     /*let displayedWeatherItems = weatherForecast.filter(el => {
-        let filterVal = el.town.toLowerCase();
-        return filterVal.indexOf(filterQuery) !== -1;
-      });
-
-      this.setState({
-          displayedWeatherItems: displayedWeatherItems
-      });*/
   }
 
   placeholderText() {
