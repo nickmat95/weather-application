@@ -131,7 +131,7 @@ class TownWeatherItem extends React.Component {
    }
 }
 
-/*class TownWeatherList extends React.Component {
+class TownWeatherList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -140,30 +140,6 @@ class TownWeatherItem extends React.Component {
       displayedWeatherItems: weatherForecast
     };
   } 
-
-  render() {
-    return(
-      
-    );
-  }
-}*/
-
-class Home extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      displayedWeatherItems: weatherForecast,
-      nameFilter: ''
-    };
-  } 
-
-  todayDate = () => {
-    let date = new Date();
-
-    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
-  }
 
   townFilterUpdate = (filterValue) => {
     this.setState({nameFilter: filterValue});
@@ -176,6 +152,38 @@ class Home extends React.Component {
       this.setState({
           displayedWeatherItems: displayedWeatherItems
       });
+  }
+
+  render() {
+    return(
+       <div className={s.townWeatherList}>
+        {
+          this.state.displayedWeatherItems.map(el => <TownWeatherItem 
+            key={el.id}
+            town={el.town}
+            regionId={el.regionId}
+            temperatureDay={el.temperatureDay}
+            temperatureNight={el.temperatureNight}
+            temperatureWater={el.temperatureWater}
+            cloudiness={el.cloudiness}
+            precipitation={el.precipitation}
+            pressure={el.pressure}
+            humidity={el.humidity}
+            windSpeed={el.windSpeed}
+            img = {el.image}
+            />)
+        }
+      </div>
+    );
+  }
+}
+
+class Home extends React.Component {
+
+  todayDate = () => {
+    let date = new Date();
+
+    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
   render() {
@@ -195,24 +203,7 @@ class Home extends React.Component {
           }
           </div>
         </div>
-        <div className={s.townWeatherList}>
-        {
-          this.state.displayedWeatherItems.map(el => <TownWeatherItem 
-            key={el.id}
-            town={el.town}
-            regionId={el.regionId}
-            temperatureDay={el.temperatureDay}
-            temperatureNight={el.temperatureNight}
-            temperatureWater={el.temperatureWater}
-            cloudiness={el.cloudiness}
-            precipitation={el.precipitation}
-            pressure={el.pressure}
-            humidity={el.humidity}
-            windSpeed={el.windSpeed}
-            img = {el.image}
-            />)
-        }
-      </div>
+          <TownWeatherList />
         </div>
       </div>
     );
