@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
+import Link from 'components/Link';
 
 let weatherForecast = [
   {
@@ -110,7 +111,9 @@ class TownWeatherItem extends React.Component {
          <div className={s.townWeatherItem__iconWrap}>
             <img className={s.townWeatherItem__icon} src={this.props.img} />
          </div>
-         <p className={s.townWeatherItem__town}>{this.props.town}</p>
+         <p className={s.townWeatherItem__town}>
+            <Link className={s.townWeatherItem__link} to="/more-weather-info">{this.props.town}</Link>
+         </p>
          <p className={s.townWeatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
          <p className={s.townWeatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
          <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
