@@ -80,32 +80,24 @@ let weatherForecast = [
 
 class FilterInput extends React.Component {
 
-  townFilterUpdate = (event) => {
-    /**
-     * TO DO
-    */
+  townFilterChange = (event) => {
 
     let filterValue = event.target.value;
 
     this.props.updateFilter(filterValue);
   }
 
+  
+
   placeholderText() {
 
-    let text = 'enter value';
-
-    if(this.props.filterID == 1) {
-      text = 'enter city';
-    } else if (this.props.filterID == 2) {
-      text = 'enter region';
-    }
-
+    let text = (this.props.filterID == 1) ? 'enter city' : (this.props.filterID == 2) ? 'enter region' : 'enter value';
     return text;
   }
 
   render() {
     return (
-        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.townFilterUpdate}/>
+        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.townFilterChange}/>
     );
   }
 }
@@ -132,33 +124,10 @@ class TownWeatherItem extends React.Component {
 }
 
 class TownWeatherList extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      displayedWeatherItems: weatherForecast
-    };
-  } 
-
-  townFilterUpdate = (filterValue) => {
-    this.setState({nameFilter: filterValue});
-
-    let displayedWeatherItems = weatherForecast.filter(el => {
-        let filterVal = el.town.toLowerCase();
-        return filterVal.indexOf(filterValue) !== -1;
-      });
-
-      this.setState({
-          displayedWeatherItems: displayedWeatherItems
-      });
-  }
-
   render() {
-    return(
-       <div className={s.townWeatherList}>
-        {
-          this.state.displayedWeatherItems.map(el => <TownWeatherItem 
+    let displayedItems = this.props.items.map(function(el) {
+        return (
+          <TownWeatherItem 
             key={el.id}
             town={el.town}
             regionId={el.regionId}
@@ -171,7 +140,17 @@ class TownWeatherList extends React.Component {
             humidity={el.humidity}
             windSpeed={el.windSpeed}
             img = {el.image}
-            />)
+            />
+          );
+      });
+
+
+    let content = (this.props.items.length > 0) ? displayedItems : <div className={s.townWeatherList__noInfoWrap}><span className={s.townWeatherList__noInfo}>Nothing to show!</span></div>;
+
+    return(
+       <div className={s.townWeatherList}>
+        {
+          content
         }
       </div>
     );
@@ -179,6 +158,28 @@ class TownWeatherList extends React.Component {
 }
 
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      displayedWeatherItems: weatherForecast
+    };
+  } 
+
+  townFilterUpdate = (filterValue) => {
+
+    this.setState({nameFilter: filterValue});
+
+    let displayedWeatherItems = weatherForecast.filter(el => {
+        let filterVal = el.town.toLowerCase();
+        return filterVal.indexOf(filterValue) !== -1;
+      });
+
+      this.setState({
+          displayedWeatherItems: displayedWeatherItems
+      });
+  }
 
   todayDate = () => {
     let date = new Date();
@@ -203,7 +204,7 @@ class Home extends React.Component {
           }
           </div>
         </div>
-          <TownWeatherList />
+          <TownWeatherList items={this.state.displayedWeatherItems} />
         </div>
       </div>
     );

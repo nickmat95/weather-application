@@ -41,6 +41,16 @@
   box-shadow: 1px 4px 15px #2256D6;
 }
 
+.townWeatherList__noInfoWrap {
+  margin: 50px 0 0 ;
+  text-align: center;
+}
+
+.townWeatherList__noInfo {
+  font-weight: bold;
+  font-size: 2em;
+}
+
 .townWeatherItem {
   display: inline-block;
   width: 27%;
