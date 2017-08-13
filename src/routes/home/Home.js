@@ -8,7 +8,7 @@ let weatherForecast = [
   {
     id: 11,
     town: 'Saint-Petersburg',
-    regionId: 1,
+    region: 'Leningrad region',
     temperatureDay: '+14',
     temperatureNight: '+10',
     temperatureWater: '+6',
@@ -22,7 +22,7 @@ let weatherForecast = [
   {
     id: 12,
     town: 'Pavlovsk',
-    regionId: 1,
+    region: 'Leningrad region',
     temperatureDay: '+15',
     temperatureNight: '+11',
     temperatureWater: '+6',
@@ -36,7 +36,7 @@ let weatherForecast = [
   {
     id: 13,
     town: 'Pushkin',
-    regionId: 1,
+    region: 'Leningrad region',
     temperatureDay: '+14',
     temperatureNight: '+10',
     temperatureWater: '+6',
@@ -50,7 +50,7 @@ let weatherForecast = [
   {
     id: 21,
     town: 'Zheleznogorsk',
-    regionId: 2,
+    region: 'Krasnoyarsk region',
     temperatureDay: '+14',
     temperatureNight: '+10',
     temperatureWater: '+6',
@@ -64,7 +64,7 @@ let weatherForecast = [
   {
     id: 22,
     town: 'Sosnovoborsk',
-    regionId: 2,
+    region: 'Krasnoyarsk region',
     temperatureDay: '+14',
     temperatureNight: '+10',
     temperatureWater: '+6',
@@ -80,11 +80,12 @@ let weatherForecast = [
 
 class FilterInput extends React.Component {
 
-  townFilterChange = (event) => {
+  filterChange = (event) => {
 
     let filterValue = event.target.value;
+    let filterId = this.props.filterID;
 
-    this.props.updateFilter(filterValue);
+    this.props.updateFilter(filterValue, filterId);
   }
 
   
@@ -97,7 +98,7 @@ class FilterInput extends React.Component {
 
   render() {
     return (
-        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.townFilterChange}/>
+        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.filterChange}/>
     );
   }
 }
@@ -130,7 +131,7 @@ class TownWeatherList extends React.Component {
           <TownWeatherItem 
             key={el.id}
             town={el.town}
-            regionId={el.regionId}
+            region={el.region}
             temperatureDay={el.temperatureDay}
             temperatureNight={el.temperatureNight}
             temperatureWater={el.temperatureWater}
@@ -167,12 +168,12 @@ class Home extends React.Component {
     };
   } 
 
-  townFilterUpdate = (filterValue) => {
+  filterUpdate = (filterValue, filterId) => {
 
     this.setState({nameFilter: filterValue});
 
     let displayedWeatherItems = weatherForecast.filter(el => {
-        let filterVal = el.town.toLowerCase();
+        let filterVal = (filterId == 1) ? el.town.toLowerCase() : el.region.toLowerCase();
         return filterVal.indexOf(filterValue) !== -1;
       });
 
@@ -191,16 +192,16 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-        <p className={s.todayDate}>{this.todayDate}</p>
+        <p className={s.todayDate}>{this.todayDate()}</p>
         <div className={s.filters}>
           <div className={s.filters__item}>
           {
-            <FilterInput filterID="1" updateFilter={this.townFilterUpdate} />
+            <FilterInput filterID="1" updateFilter={this.filterUpdate} />
           }
           </div>
           <div className={s.filters__item}>
           {
-            <FilterInput filterID="2" />
+            <FilterInput filterID="2" updateFilter={this.filterUpdate} />
           }
           </div>
         </div>
