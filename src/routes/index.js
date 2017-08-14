@@ -35,8 +35,9 @@ const routes = {
       load: () => import(/* webpackChunkName: 'admin' */ './admin'),
     },
     {
-      path: '/more-weather-info',
-      load: () => import(/* webpackChunkName: 'more-weather-info' */ './more-weather-info'),
+      path: '/detailed/:city',
+      load: () => import(/* webpackChunkName: 'detailed' */ './detailed'),
+      action: (context) => <h1>123</h1>,
     },
 
     // Wildcard routes, e.g. { path: '*', ... } (must go last)

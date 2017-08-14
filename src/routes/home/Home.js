@@ -106,13 +106,14 @@ class FilterInput extends React.Component {
 
 class TownWeatherItem extends React.Component {
   render() {
+    let link = `/detailed/${this.props.town}`;
      return(
        <div className={s.townWeatherItem}>
          <div className={s.townWeatherItem__iconWrap}>
             <img className={s.townWeatherItem__icon} src={this.props.img} />
          </div>
          <p className={s.townWeatherItem__town}>
-            <Link className={s.townWeatherItem__link} to="/more-weather-info">{this.props.town}</Link>
+            <Link className={s.townWeatherItem__link} to={link}>{this.props.town}</Link>
          </p>
          <p className={s.townWeatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
          <p className={s.townWeatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
@@ -129,7 +130,7 @@ class TownWeatherItem extends React.Component {
 
 class TownWeatherList extends React.Component {
   render() {
-    let displayedItems = this.props.items.map(function(el) {
+    let displayedItems = this.props.items.map(el => {
         return (
           <TownWeatherItem 
             key={el.id}
