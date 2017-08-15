@@ -6,7 +6,7 @@ import s from './detailed.css';
 
 class Detailed extends React.Component {
     render() {
-    return (
+      return (
       <div className={s.root}>
         <div className={s.container}>
         	<h1 className={s.title}>Weather in ...</h1>

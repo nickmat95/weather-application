@@ -2,9 +2,8 @@
 import React from 'react';
 import Detailed from './detailed';
 import Layout from '../../components/Layout';
-import Route from '../../router';
 
-async function action({ fetch }) {
+async function action() {
   return {
     chunks: ['detailed'],
     title: 'Detailed weather forecast',

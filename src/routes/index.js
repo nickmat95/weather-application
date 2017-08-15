@@ -37,7 +37,6 @@ const routes = {
     {
       path: '/detailed/:city',
       load: () => import(/* webpackChunkName: 'detailed' */ './detailed'),
-      action: (context) => <h1>123</h1>,
     },
 
     // Wildcard routes, e.g. { path: '*', ... } (must go last)
@@ -46,6 +45,13 @@ const routes = {
       load: () => import(/* webpackChunkName: 'not-found' */ './not-found'),
     },
   ],
+
+  action(context, params) { // function, optional
+
+    // action method should return anything except `null` or `undefined` to be resolved by router
+    // otherwise router will throw `Page not found` error if all matched routes returned nothing
+    return '<h1>Home Page</h1>';
+  },
 
   async action({ next }) {
     // Execute each child route until one of them return the result
