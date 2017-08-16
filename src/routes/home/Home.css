@@ -25,7 +25,11 @@
   margin: 0 0 0 3%;
 }
 
-.filters__input {
+.filters__filterWrap>div {
+  width: 100%;
+}
+
+.filters__filter {
   width: 60%;
   padding: 3px;
   border: 2px solid #373277;
@@ -36,9 +40,20 @@
   outline: none;
 }
 
-.filters__input:focus {
+.filters__filter:focus {
   width: 97%;
   box-shadow: 1px 4px 15px #2256D6;
+}
+
+.autocompleteItem {
+  color: black;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.autocompleteItem:hover {
+  background: rgba(220, 220, 220, 0.7);
+  border-radius: 5px;
 }
 
 .townWeatherList__noInfoWrap {

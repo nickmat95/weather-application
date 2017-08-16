@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import Link from 'components/Link';
+import { getTowns, getRegions, matchItemToTerm, sortItems, styles } from './autocomplete-utils.js'
+import Autocomplete from 'react-autocomplete';
 
 let weatherForecast = [
   {
@@ -78,28 +80,48 @@ let weatherForecast = [
   }
 ];
 
-
 class FilterInput extends React.Component {
+  constructor(props) {
+    super(props);
 
-  filterChange = (event) => {
+    this.state = {};
+  } 
 
-    let filterValue = event.target.value;
+  filterChange = (event, value) => {
+
+    this.setState({
+          value: value
+    });
+
+    let filterValue = value;
     let filterId = this.props.filterID;
 
     this.props.updateFilter(filterValue, filterId);
   }
 
-  
-
-  placeholderText() {
-
-    let text = (this.props.filterID == 1) ? 'enter city' : (this.props.filterID == 2) ? 'enter region' : 'enter value';
-    return text;
-  }
-
   render() {
+    let getItems = (this.props.filterID == 1) ? getTowns() : getRegions();
+    let placeholderText = (this.props.filterID == 1) ? 'enter city' : (this.props.filterID == 2) ? 'enter region' : 'enter value';
     return (
-        <input className={s.filters__input} type="text" placeholder={this.placeholderText()} onChange={this.filterChange}/>
+      <div className={s.filters__filterWrap}>
+        {
+          <Autocomplete
+          value={this.state.value}
+          inputProps={{ className: s.filters__filter, placeholder: placeholderText, onChange: this.filterChange}}
+          items={getItems}
+          getItemValue={(item) => item.name}
+          shouldItemRender={matchItemToTerm}
+          sortItems={sortItems}
+          onChange={(event, value) => this.filterChange(event, value)}
+          onSelect={value => this.filterChange('', value)}
+          renderItem={(item, isHighlighted) => (
+            <div 
+              className={s.autocompleteItem}
+            >{item.name}</div>
+          )}
+          />
+        }
+        </div>
     );
   }
 }
@@ -173,6 +195,8 @@ class Home extends React.Component {
   } 
 
   filterUpdate = (filterValue, filterId) => {
+
+    filterValue = filterValue.toLowerCase();
 
     this.setState({nameFilter: filterValue});
 
