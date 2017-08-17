@@ -1,0 +1,72 @@
+[
+  {
+    "id": 11,
+    "town": "Saint-Petersburg",
+    "region": "Leningrad region",
+    "temperatureDay": "+14",
+    "temperatureNight": "+10",
+    "temperatureWater": "+6",
+    "cloudiness": "cloudy",
+    "precipitation": "rain",
+    "pressure": 745,
+    "humidity": 50,
+    "windSpeed": 2,
+    "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png"
+  },
+  {
+    "id": 12,
+    "town": "Pavlovsk",
+    "region": "Leningrad region",
+    "temperatureDay": "+15",
+    "temperatureNight": "+11",
+    "temperatureWater": "+6",
+    "cloudiness": "cloudy",
+    "precipitation": "rain",
+    "pressure": 745,
+    "humidity": 50,
+    "windSpeed": 2,
+    "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png"
+  },
+  {
+    "id": 13,
+    "town": "Pushkin",
+    "region": "Leningrad region",
+    "temperatureDay": "+14",
+    "temperatureNight": "+10",
+    "temperatureWater": "+6",
+    "cloudiness": "cloudy",
+    "precipitation": "rain",
+    "pressure": 745,
+    "humidity": 50,
+    "windSpeed": 2,
+    "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png"
+  },
+  {
+    "id": 21,
+    "town": "Zheleznogorsk",
+    "region": "Krasnoyarsk region",
+    "temperatureDay": "+14",
+    "temperatureNight": "+10",
+    "temperatureWater": "+6",
+    "cloudiness": "cloudy",
+    "precipitation": "rain",
+    "pressure": 745,
+    "humidity": 50,
+    "windSpeed": 2,
+    "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png"
+  },
+  {
+    "id": 22,
+    "town": "Sosnovoborsk",
+    "region": "Krasnoyarsk region",
+    "temperatureDay": "+14",
+    "temperatureNight": "+10",
+    "temperatureWater": "+6",
+    "cloudiness": "cloudy",
+    "precipitation": "rain",
+    "pressure": 745,
+    "humidity": 50,
+    "windSpeed": 2,
+    "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png"
+  }
+]

@@ -3,14 +3,14 @@ import React from 'react';
 import Detailed from './detailed';
 import Layout from '../../components/Layout';
 
-async function action() {
+async function action(context, params) {
+
   return {
     chunks: ['detailed'],
     title: 'Detailed weather forecast',
-    from: '',
     component: (
       <Layout>
-        <Detailed />
+        <Detailed city={params.city}/>
       </Layout>
     ),
   };
