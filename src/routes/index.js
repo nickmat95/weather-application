@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 
 // The top-level (parent) route
+
 const routes = {
   path: '/',
 
@@ -46,12 +47,6 @@ const routes = {
     },
   ],
 
-  action(context, params) { // function, optional
-
-    // action method should return anything except `null` or `undefined` to be resolved by router
-    // otherwise router will throw `Page not found` error if all matched routes returned nothing
-    return '<h1>Home Page</h1>';
-  },
 
   async action({ next }) {
     // Execute each child route until one of them return the result
@@ -60,6 +55,7 @@ const routes = {
     // Provide default values for title, description etc.
     route.title = `${route.title || 'Untitled Page'}`;
     route.description = route.description || '';
+    route.from = 'Pavlovsk';
 
     return route;
   },

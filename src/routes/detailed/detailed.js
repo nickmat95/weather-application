@@ -6,6 +6,7 @@ import s from './detailed.css';
 
 class Detailed extends React.Component {
     render() {
+      console.log('>>', this.props);
       return (
       <div className={s.root}>
         <div className={s.container}>

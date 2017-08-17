@@ -7,6 +7,7 @@ async function action() {
   return {
     chunks: ['detailed'],
     title: 'Detailed weather forecast',
+    from: '',
     component: (
       <Layout>
         <Detailed />

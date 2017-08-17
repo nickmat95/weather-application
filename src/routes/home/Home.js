@@ -17,9 +17,9 @@ let weatherForecast = [
     temperatureWater: '+6',
     cloudiness: 'cloudy',
     precipitation: 'rain',
-    pressure: '745 mmHg',
-    humidity: '50%',
-    windSpeed: '2 m/s',
+    pressure: 745,
+    humidity: 50,
+    windSpeed: 2,
     image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
@@ -31,9 +31,9 @@ let weatherForecast = [
     temperatureWater: '+6',
     cloudiness: 'cloudy',
     precipitation: 'rain',
-    pressure: '745 mmHg',
-    humidity: '50%',
-    windSpeed: '2 m/s',
+    pressure: 745,
+    humidity: 50,
+    windSpeed: 2,
     image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
@@ -45,9 +45,9 @@ let weatherForecast = [
     temperatureWater: '+6',
     cloudiness: 'cloudy',
     precipitation: 'rain',
-    pressure: '745 mmHg',
-    humidity: '50%',
-    windSpeed: '2 m/s',
+    pressure: 745,
+    humidity: 50,
+    windSpeed: 2,
     image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
@@ -59,9 +59,9 @@ let weatherForecast = [
     temperatureWater: '+6',
     cloudiness: 'cloudy',
     precipitation: 'rain',
-    pressure: '745 mmHg',
-    humidity: '50%',
-    windSpeed: '2 m/s',
+    pressure: 745,
+    humidity: 50,
+    windSpeed: 2,
     image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   },
   {
@@ -73,9 +73,9 @@ let weatherForecast = [
     temperatureWater: '+6',
     cloudiness: 'cloudy',
     precipitation: 'rain',
-    pressure: '745 mmHg',
-    humidity: '50%',
-    windSpeed: '2 m/s',
+    pressure: 745,
+    humidity: 50,
+    windSpeed: 2,
     image: 'http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png'
   }
 ];
@@ -87,10 +87,14 @@ class FilterInput extends React.Component {
     this.state = {};
   } 
 
+  static propTypes = {
+    filterID: PropTypes.string.isRequired,
+  }
+
   filterChange = (event, value) => {
 
     this.setState({
-          value: value
+      value: value
     });
 
     let filterValue = value;
@@ -142,15 +146,34 @@ class TownWeatherItem extends React.Component {
          <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
          <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
          <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
-         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>pressure:</span> {this.props.pressure}</p>
-         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>humidity:</span> {this.props.humidity}</p>
-         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>wind speed:</span> {this.props.windSpeed}</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>pressure:</span> {this.props.pressure} mmHg</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>humidity:</span> {this.props.humidity}%</p>
+         <p className={s.townWeatherItem__weatherItem}><span className={s.townWeatherItem__weatherItemTitle}>wind speed:</span> {this.props.windSpeed} m/s</p>
        </div>
      );
    }
 }
 
 class TownWeatherList extends React.Component {
+  static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        town: PropTypes.string.isRequired,
+        region: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        temperatureDay: PropTypes.string.isRequired,
+        temperatureNight: PropTypes.string.isRequired,
+        temperatureWater: PropTypes.string.isRequired,
+        cloudiness: PropTypes.string.isRequired,
+        precipitation: PropTypes.string.isRequired,
+        pressure: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+        windSpeed: PropTypes.number.isRequired,
+      }),
+    ),
+  };
+
   render() {
     let displayedItems = this.props.items.map(el => {
         return (
