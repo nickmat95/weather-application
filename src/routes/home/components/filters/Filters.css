@@ -1,0 +1,9 @@
+
+@import '../../../../components/variables.css';
+
+
+.filters__item {
+  display: inline-block;
+  width: 30%;
+  margin: 0 3% 0 0;
+}

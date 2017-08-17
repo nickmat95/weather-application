@@ -1,0 +1,71 @@
+
+@import '../../../../../components/variables.css';
+
+.weatherItem {
+  display: inline-block;
+  width: 27%;
+  margin: 3% 3% 0 0;
+  padding: 13px;
+  border: 3px solid #373277;
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px #666;
+}
+
+.weatherItem__town,
+.weatherItem__dayTemp,
+.weatherItem__nightTemp,
+.weatherItem__weatherItem {
+  float: left;
+  margin: 0;
+}
+
+.weatherItem__iconWrap {
+  float: left;
+  width: 65px;
+  height: 65px;
+  margin: 0 10px 5px 0;
+  border-radius: 15px;
+}
+
+.weatherItem__icon {
+  display: block;
+  width: 100%;
+}
+
+.weatherItem__town {
+  width: 65%;
+  height: 35px;
+  font-weight: bold;
+}
+
+.weatherItem__dayTemp {
+  font-weight: bold;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.weatherItem__nightTemp {
+  font-weight: bold;
+  margin: 7px 0 0 10px;
+  color: #666;
+  cursor: pointer;
+}
+
+.weatherItem__weatherItem {
+  width: 100%;
+  font-size: 0.8em;
+}
+
+.weatherItem__weatherItemTitle {
+  color: #666;
+}
+
+.weatherItem__link {
+  color: black;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.weatherItem__link:hover {
+  color: #2256D6;
+}
