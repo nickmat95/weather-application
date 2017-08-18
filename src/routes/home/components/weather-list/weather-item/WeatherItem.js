@@ -7,7 +7,7 @@ import Link from 'components/Link';
 
 class WeatherItem extends React.Component {
   render() {
-    let link = `/detailed/${this.props.town}`;
+    let link = `/detailed/${this.props.townID}`;
      return(
        <div className={s.weatherItem}>
          <div className={s.weatherItem__iconWrap}>

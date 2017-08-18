@@ -1,0 +1,7 @@
+@import '../../../../components/variables.css';
+
+.weekDays {
+	display: inline-block;
+    width: 100%;
+    margin: 10px 0 0;
+}

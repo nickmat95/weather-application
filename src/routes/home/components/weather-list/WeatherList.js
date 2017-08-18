@@ -30,6 +30,7 @@ class WeatherList extends React.Component {
       return (
         <WeatherItem 
           key={el.id}
+          townID={el.id}
           town={el.town}
           region={el.region}
           temperatureDay={el.temperatureDay}

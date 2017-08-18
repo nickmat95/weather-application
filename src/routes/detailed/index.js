@@ -10,7 +10,7 @@ async function action(context, params) {
     title: 'Detailed weather forecast',
     component: (
       <Layout>
-        <Detailed city={params.city}/>
+        <Detailed townID={Number(params.city)}/>
       </Layout>
     ),
   };

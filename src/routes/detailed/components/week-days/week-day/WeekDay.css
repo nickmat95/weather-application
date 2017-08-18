@@ -1,0 +1,38 @@
+@import '../../../../../components/variables.css';
+
+.day {
+	float: left;
+    width: 85px;
+    margin: 0 18px 0 0;
+    padding: 10px;
+    background: bisque;    
+}
+
+.day__name {
+	margin: 0;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.day__iconWrap {
+    width: 40px;
+    height: 40px;
+    margin: 3px 0;
+}
+
+.day__icon {
+    display: block;
+    width: 100%
+}
+
+.day__dayTemp {
+    float: left;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.day__nightTemp {
+	float: left;
+    margin: 6px 0 0 4px;
+    font-size: 0.8em;
+}
