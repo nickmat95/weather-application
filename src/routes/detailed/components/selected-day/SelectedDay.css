@@ -1,0 +1,82 @@
+
+@import '../../../../components/variables.css';
+
+.selectedDay {
+  display: inline-block;
+}
+
+.dayPart {
+  float: left;
+  width: 150px;
+    padding: 15px;
+}
+
+.dayPart_theme_morning {
+  background: #B0E0E6;
+}
+
+.dayPart_theme_day {
+  background: #ADD8E6;
+}
+
+.dayPart_theme_evening {
+  background: #87CEEB;
+}
+
+.dayPart_theme_night {
+  background: #00BFFF;
+}
+
+.dayPart__title {
+  margin: 0;
+  text-align: center;
+  font-size: 1.1em;
+    font-weight: bold;
+}
+
+.dayPart__iconWrap {
+  width: 68px;
+    height: 68px;
+    margin: 8px auto;
+    background: blanchedalmond;
+}
+
+.dayPart__icon {
+
+}
+
+.dayPart__weatherIndicator {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
+.dayPart__weatherIndicatorTitle,
+.otherInfo__weatherIndicatorTitle {
+  color: #666;
+}
+
+.dayPart__temperature {
+  margin: 5px 0 0;
+  text-align: center;
+  font-size: 1.6em;
+    font-weight: bold;
+}
+
+.otherInfo {
+  float: left;
+    margin: 0 0 0 10px;
+}
+
+.otherInfo__weatherIndicator:first-child {
+  margin-top: 0;
+}
+
+.otherInfo__weatherIndicator:last-child {
+  margin-bottom: 0;
+}
+
+.otherInfo__weatherIndicator {
+    margin: 5px;
+    font-size: 0.9em;
+}

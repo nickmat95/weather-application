@@ -18,12 +18,12 @@ class WeatherItem extends React.Component {
          </p>
          <p className={s.weatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
          <p className={s.weatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>temperature water:</span> {this.props.temperatureWater}</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>cloudiness:</span> {this.props.cloudiness}</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>precipitation:</span> {this.props.precipitation}</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>pressure:</span> {this.props.pressure} mmHg</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>humidity:</span> {this.props.humidity}%</p>
-         <p className={s.weatherItem__weatherItem}><span className={s.weatherItem__weatherItemTitle}>wind speed:</span> {this.props.windSpeed} m/s</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>temperature water:</span> {this.props.temperatureWater}</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>cloudiness:</span> {this.props.cloudiness}</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>precipitation:</span> {this.props.precipitation}</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>pressure:</span> {this.props.pressure} mmHg</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>humidity:</span> {this.props.humidity}%</p>
+         <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>wind speed:</span> {this.props.windSpeed} m/s</p>
        </div>
      );
    }

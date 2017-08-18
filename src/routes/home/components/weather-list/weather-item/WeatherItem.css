@@ -14,7 +14,7 @@
 .weatherItem__town,
 .weatherItem__dayTemp,
 .weatherItem__nightTemp,
-.weatherItem__weatherItem {
+.weatherItem__weatherIndicator {
   float: left;
   margin: 0;
 }
@@ -46,17 +46,17 @@
 
 .weatherItem__nightTemp {
   font-weight: bold;
-  margin: 7px 0 0 10px;
+  margin: 8px 0 0 10px;
   color: #666;
   cursor: pointer;
 }
 
-.weatherItem__weatherItem {
+.weatherItem__weatherIndicator {
   width: 100%;
   font-size: 0.8em;
 }
 
-.weatherItem__weatherItemTitle {
+.weatherItem__weatherIndicatorTitle {
   color: #666;
 }
 
