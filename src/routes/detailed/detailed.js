@@ -41,6 +41,12 @@ class Detailed extends React.Component {
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
+  changeInfo = (weatherData) => {
+    this.setState({
+      displayedDate: weatherData
+    });
+  }
+
   render() {
     let displayedTownWeather = this.preparationArr();
     let weekForecast = displayedTownWeather.weekForecast;
@@ -50,8 +56,8 @@ class Detailed extends React.Component {
         <div className={s.container}>
         	<h1>Weather in {displayedTownWeather.town}</h1>
           <p className={s.selectedDate}></p>
-        	<SelectedDay />
-          <WeekDays items={weekForecast} />
+        	<SelectedDay displayedDate={this.state.displayedDate} />
+          <WeekDays items={weekForecast} changeInfo={this.changeInfo} />
         </div>
       </div>
     );

@@ -26,14 +26,21 @@ class WeekDays extends React.Component {
     ),
   };
 
+  getData = (date) => {
+    let weatherData = this.props.items.filter(el => el.shortDate == date);
+    this.props.changeInfo(weatherData[0]);
+  }
+
     render() {
     	let content = this.props.items.map((el) => {
     		return (
     			<WeekDay 
+                    key={el.shortDate}
     				date={el.shortDate}
     				image={el.image}
     				temperatureDay={el.temperatureDay}
     				temperatureNight={el.temperatureNight}
+                    getData={this.getData}
     			/>
     		);
     	});

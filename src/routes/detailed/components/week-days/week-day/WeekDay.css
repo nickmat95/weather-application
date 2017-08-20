@@ -5,7 +5,13 @@
     width: 85px;
     margin: 0 18px 0 0;
     padding: 10px;
-    background: bisque;    
+    background: lightgrey; 
+    transition-duration: 0.8s;
+    cursor: pointer;   
+}
+
+.day:hover {
+    box-shadow: 1px 2px 17px #2256D6;
 }
 
 .day__name {
