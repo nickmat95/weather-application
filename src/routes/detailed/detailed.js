@@ -54,8 +54,7 @@ class Detailed extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-        	<h1>Weather in {displayedTownWeather.town}</h1>
-          <p className={s.selectedDate}></p>
+        	<h1 className={s.title}>Weather in {displayedTownWeather.town}</h1>
         	<SelectedDay displayedDate={this.state.displayedDate} />
           <WeekDays items={weekForecast} changeInfo={this.changeInfo} />
         </div>

@@ -5,6 +5,12 @@
   display: inline-block;
 }
 
+.date {
+  margin: 0 0 17px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 .dayPart {
   float: left;
   width: 150px;

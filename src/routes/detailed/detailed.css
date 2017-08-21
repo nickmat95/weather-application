@@ -11,6 +11,6 @@
   max-width: var(--max-content-width);
 }
 
-.selectedDate {
-
+.title {
+	margin-bottom: 10px;
 }

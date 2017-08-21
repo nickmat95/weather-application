@@ -25,6 +25,7 @@ class SelectedDay extends React.Component {
     render() {
         return (
             <div className={s.selectedDay}>
+                <p className={s.date}>{this.props.displayedDate.date}</p>
                 <div className={s.dayPart + ' ' + s.dayPart_theme_morning}>
                     <p className={s.dayPart__title}>Morning</p>
                     <div className={s.dayPart__iconWrap}>
@@ -83,13 +84,13 @@ class SelectedDay extends React.Component {
 
                 <div className={s.otherInfo}>
                     <p className={s.otherInfo__weatherIndicator}>
-                        <span className={s.otherInfo__weatherIndicatorTitle}>pressure: </span> {this.props.displayedDate.pressure}
+                        <span className={s.otherInfo__weatherIndicatorTitle}>pressure: </span> {this.props.displayedDate.pressure} mmHG
                     </p>
                     <p className={s.otherInfo__weatherIndicator}>
-                        <span className={s.otherInfo__weatherIndicatorTitle}>humidity: </span> {this.props.displayedDate.humidity}
+                        <span className={s.otherInfo__weatherIndicatorTitle}>humidity: </span> {this.props.displayedDate.humidity}%
                     </p>
                     <p className={s.otherInfo__weatherIndicator}>
-                        <span className={s.otherInfo__weatherIndicatorTitle}>wind speed: </span> {this.props.displayedDate.windSpeed}
+                        <span className={s.otherInfo__weatherIndicatorTitle}>wind speed: </span> {this.props.displayedDate.windSpeed} m/s
                     </p>
                     <p className={s.otherInfo__weatherIndicator}>
                         <span className={s.otherInfo__weatherIndicatorTitle}>temperature water: </span> {this.props.displayedDate.temperatureWater}
