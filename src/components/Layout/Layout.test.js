@@ -1,5 +1,3 @@
-/* eslint-env jest */
-/* eslint-disable padded-blocks, no-unused-expressions */
 
 import React from 'react';
 import renderer from 'react-test-renderer';

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import serialize from 'serialize-javascript';
 import config from '../config';
 
-/* eslint-disable react/no-danger */
-
 class Html extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
@@ -16,7 +14,7 @@ class Html extends React.Component {
       }).isRequired,
     ),
     scripts: PropTypes.arrayOf(PropTypes.string.isRequired),
-    app: PropTypes.object, // eslint-disable-line
+    app: PropTypes.object,
     children: PropTypes.string.isRequired,
   };
 
