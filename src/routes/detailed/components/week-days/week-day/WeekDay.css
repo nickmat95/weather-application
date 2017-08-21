@@ -6,6 +6,7 @@
     margin: 0 18px 0 0;
     padding: 10px;
     background: lightgrey; 
+    border-radius: 7px;
     transition-duration: 0.8s;
     cursor: pointer;   
 }
