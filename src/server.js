@@ -3,7 +3,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-import expressGraphQL from 'express-graphql';
+//import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
 import React from 'react';
@@ -19,6 +19,41 @@ import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
 
 const app = express();
+
+
+//DELETE CODE ------------------------------------------------------------------------
+
+import request from 'request';
+import sqlite3 from 'sqlite3';
+
+let db = new sqlite3.Database('database.sqlite');
+
+app.get('/weather', (req, res) => {
+  request('https://api.gismeteo.ru/v2/weather/current/?latitude=54.35&longitude=52.52', function (error, response, body) {
+    res.send(body);
+  });
+});
+
+app.get('/towns', (req, res) => {
+  db.serialize(() => {
+    db.all("SELECT id, name FROM cities", (err, arr) => {
+        res.send(arr);
+    });
+  });
+});
+
+app.get('/regions', (req, res) => {
+  db.serialize(() => {
+    db.all("SELECT id, name FROM regions", (err, arr) => {
+        res.send(arr);
+    });
+  });
+});
+
+db.close();
+
+//END DELETE -------------------------------------------------------------------------
+
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the
