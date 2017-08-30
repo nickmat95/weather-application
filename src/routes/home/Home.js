@@ -5,15 +5,10 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import weatherForecast from './weather-forecast.json';
 import Filters from './components/filters/Filters';
-import WeatherList from './components/weather-list/WeatherList';
 import ReactResource from 'react-resource';
 
-/*const Town = new ReactResource('/api/towns/{:town}', {town: ':town'});
-const townList = new Town();
-const list = townList.$query()
-.then(result => result)
-.catch(error => console.error(error));*/
-
+const Forecast = new ReactResource('/api/all_forecast/{:forecast}', {forecast: ':forecast'});
+const forecastList = new Forecast();
 
 class Home extends React.Component {
 
@@ -21,10 +16,19 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      displayedWeatherItems: weatherForecast
+      displayedWeatherItems: []
     };
+  }
 
-  } 
+  componentDidMount() {
+    forecastList.$get()
+    .then(result => {
+        this.setState({
+          displayedWeatherItems: result
+        });
+    })
+    .catch(error => console.error(error));
+  }
 
   filterUpdate = (filterValue, filterId) => {
 

@@ -29,6 +29,14 @@ import sqlite3 from 'sqlite3';
 
 let db = new sqlite3.Database('database.sqlite');
 
+app.get('/api/all_forecast', (req, res) => {
+    let path = `src/server/weather-forecast.json`;
+
+    fs.readFile(path, 'utf8', (err, data) => {
+      res.send(data);
+    });
+});
+
 app.get('/api/weather/:townID', (req, res) => {
     let path = `src/server/detailed_forecast/${req.params.townID}.json`;
 
