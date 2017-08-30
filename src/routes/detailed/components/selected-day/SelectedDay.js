@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -7,19 +6,19 @@ import s from './SelectedDay.css';
 class SelectedDay extends React.Component {
     static defaultProps = {
         displayedDate: {
-            cloudiness: "rrr",
-            date: "er",
-            humidity: 500,
-            image: "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            precipitation: "rain",
-            pressure: 7000, 
-            shortDate: "wd",
-            temperatureDay: "+2w0",
-            temperatureEvening: "+ef13",
-            temperatureMorning: "+1wd1",
-            temperatureNight: "+10w",
-            temperatureWater: "+ef6",
-            windSpeed: 21
+            cloudiness: "",
+            date: "",
+            humidity: "",
+            image: "",
+            precipitation: "",
+            pressure: "", 
+            shortDate: "",
+            temperatureDay: "",
+            temperatureEvening: "",
+            temperatureMorning: "",
+            temperatureNight: "",
+            temperatureWater: "",
+            windSpeed: ""
         }
     };
     render() {

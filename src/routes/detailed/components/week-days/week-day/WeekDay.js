@@ -12,13 +12,18 @@ class WeekDay extends React.Component {
 		temperatureNight: PropTypes.string.isRequired,
 	};
 
+    isActive(value) {
+        console.log('>>', this.props.active, value)
+        return (value === this.props.active) ? s.active :'default'
+    }
+
 	addedDate = () => {
-		this.props.getData(this.props.date);
+		this.props.getData(this.props.date, this.props.dayNumber);
 	}
 
     render() {
         return (
-        	<div className={s.day} onClick={this.addedDate}>
+        	<div className={s.day + ' ' + this.isActive(this.props.dayNumber)} onClick={this.addedDate}>
         		<p className={s.day__name}>{this.props.date}</p>
         		<div className={s.day__iconWrap}>
         			<img className={s.day__icon} src={this.props.image} />

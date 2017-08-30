@@ -14,7 +14,7 @@
 .dayPart {
   float: left;
   width: 150px;
-    padding: 15px;
+  padding: 15px;
 }
 
 .dayPart_theme_morning {
@@ -37,14 +37,14 @@
   margin: 0;
   text-align: center;
   font-size: 1.1em;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .dayPart__iconWrap {
   width: 68px;
-    height: 68px;
-    margin: 8px auto;
-    background: blanchedalmond;
+  height: 68px;
+  margin: 8px auto;
+  background: blanchedalmond;
 }
 
 .dayPart__icon {
@@ -66,12 +66,12 @@
   margin: 5px 0 0;
   text-align: center;
   font-size: 1.6em;
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .otherInfo {
   float: left;
-    margin: 0 0 0 10px;
+  margin: 0 0 0 10px;
 }
 
 .otherInfo__weatherIndicator:first-child {

@@ -4,6 +4,7 @@
     "region": "Primorsk region",
     "weekForecast": [
         {
+            "dayNumber": 1,
             "temperatureMorning": "+10",
             "temperatureDay": "+15",
             "temperatureEvening": "+12",
@@ -15,10 +16,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "1",
+            "shortDate": "11"
         },
         {
+            "dayNumber": 2,
             "temperatureMorning": "+10",
             "temperatureDay": "+16",
             "temperatureEvening": "+12",
@@ -30,10 +32,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "2",
+            "shortDate": "22"
         },
         {
+            "dayNumber": 3,
             "temperatureMorning": "+10",
             "temperatureDay": "+17",
             "temperatureEvening": "+12",
@@ -45,10 +48,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "3",
+            "shortDate": "33"
         },
         {
+            "dayNumber": 4,
             "temperatureMorning": "+10",
             "temperatureDay": "+18",
             "temperatureEvening": "+12",
@@ -60,10 +64,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "4",
+            "shortDate": "44"
         },
         {
+            "dayNumber": 5,
             "temperatureMorning": "+10",
             "temperatureDay": "+19",
             "temperatureEvening": "+12",
@@ -75,10 +80,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "5",
+            "shortDate": "55"
         },
         {
+            "dayNumber": 6,
             "temperatureMorning": "+10",
             "temperatureDay": "+20",
             "temperatureEvening": "+12",
@@ -90,10 +96,11 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "6",
+            "shortDate": "66"
         },
         {
+            "dayNumber": 7,
             "temperatureMorning": "+10",
             "temperatureDay": "+21",
             "temperatureEvening": "+12",
@@ -105,8 +112,8 @@
             "humidity": 48,
             "windSpeed": 1.8,
             "image": "http://img-fotki.yandex.ru/get/9503/16969765.166/0_7b44c_99fd16d5_M.png",
-            "date": "",
-            "shortDate": ""
+            "date": "7",
+            "shortDate": "77"
         }
     ]
   }

@@ -15,18 +15,13 @@ class Detailed extends React.Component {
     super(props);
 
     this.state = {
-      towns: detailedWeatherForecast
+      towns: detailedWeatherForecast,
+      displayedTown: {
+        id: 0,
+        town: 'default',
+        weekForecast: []
+      }
     };
-
-    const detailedForecast = new TownDetailed({townID: this.props.townID});
-
-    detailedForecast.$query()
-    .then(result => {
-      this.setState({
-        displayedTown: result
-      })
-    })
-    .catch(error => console.error(error));
 
   } 
 
@@ -34,19 +29,17 @@ class Detailed extends React.Component {
     townID: PropTypes.number.isRequired,
   };
 
-  preparationArr() {
-    let date = new Date();
+  componentDidMount() {
+    const detailedForecast = new TownDetailed({townID: this.props.townID});
 
-    let displayedTownWeather = this.state.towns.filter((town) => town.id == this.props.townID)[0];
-
-    displayedTownWeather.weekForecast.forEach((el, i) => {
-      let number = (i == 0) ? 0 : 1;
-      date.setDate(date.getDate() + number);
-      el.date = date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
-      el.shortDate = date.toLocaleString("en-US", { month: 'numeric', weekday: 'short', day: 'numeric' });
-    }); 
-
-    return displayedTownWeather;
+    detailedForecast.$get()
+      .then(result => {
+        this.setState({
+          displayedTown: result,
+          displayedDate: result.weekForecast[0]
+        })
+      })
+      .catch(error => console.error(error));
   }
 
   todayDate() {
@@ -63,10 +56,8 @@ class Detailed extends React.Component {
 
   render() {
 
-    let displayedTownWeather = this.preparationArr();
+    let displayedTownWeather = this.state.displayedTown;
     let weekForecast = displayedTownWeather.weekForecast;
-
-      console.log('>>', this.state.displayedTown);
 
     return (
       <div className={s.root}>

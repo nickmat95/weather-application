@@ -4,6 +4,7 @@
     "region": "Krasnoyarsk region",
     "weekForecast": [
         {
+            "dayNumber": 1,
             "temperatureMorning": "+24",
             "temperatureDay": "+31",
             "temperatureEvening": "+26",
@@ -15,10 +16,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "1",
+            "shortDate": "11"
         },
         {
+            "dayNumber": 2,
             "temperatureMorning": "+24",
             "temperatureDay": "+32",
             "temperatureEvening": "+26",
@@ -30,10 +32,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "2",
+            "shortDate": "22"
         },
         {
+            "dayNumber": 3,
             "temperatureMorning": "+24",
             "temperatureDay": "+33",
             "temperatureEvening": "+26",
@@ -45,10 +48,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "3",
+            "shortDate": "33"
         },
         {
+            "dayNumber": 4,
             "temperatureMorning": "+24",
             "temperatureDay": "+34",
             "temperatureEvening": "+26",
@@ -60,10 +64,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "4",
+            "shortDate": "44"
         },
         {
+            "dayNumber": 5,
             "temperatureMorning": "+24",
             "temperatureDay": "+35",
             "temperatureEvening": "+26",
@@ -75,10 +80,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "5",
+            "shortDate": "55"
         },
         {
+            "dayNumber": 6,
             "temperatureMorning": "+24",
             "temperatureDay": "+36",
             "temperatureEvening": "+26",
@@ -90,10 +96,11 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "6",
+            "shortDate": "66"
         },
         {
+            "dayNumber": 7,
             "temperatureMorning": "+24",
             "temperatureDay": "+37",
             "temperatureEvening": "+26",
@@ -105,8 +112,8 @@
             "humidity": 10,
             "windSpeed": 0.5,
             "image": "http://s1.iconbird.com/ico/0612/VistaStyleWeatherIconsSet/w256h2561339359698Sunny.png",
-            "date": "",
-            "shortDate": ""
+            "date": "7",
+            "shortDate": "77"
         }
     ]
   }
