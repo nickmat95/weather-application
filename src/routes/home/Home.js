@@ -6,6 +6,13 @@ import s from './Home.css';
 import weatherForecast from './weather-forecast.json';
 import Filters from './components/filters/Filters';
 import WeatherList from './components/weather-list/WeatherList';
+import ReactResource from 'react-resource';
+
+/*const Town = new ReactResource('/api/towns/{:town}', {town: ':town'});
+const townList = new Town();
+const list = townList.$query()
+.then(result => result)
+.catch(error => console.error(error));*/
 
 
 class Home extends React.Component {
@@ -17,19 +24,6 @@ class Home extends React.Component {
       displayedWeatherItems: weatherForecast
     };
 
-  fetch('http://localhost:3000/weather', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    })
-    .then(res => {
-      let result = res.text();
-      console.log('>>', result);
-      return result;
-    })
-    .catch(e => console.error(e));
   } 
 
   filterUpdate = (filterValue, filterId) => {

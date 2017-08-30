@@ -34,15 +34,15 @@ app.get('/weather', (req, res) => {
   });
 });
 
-app.get('/towns', (req, res) => {
-  db.serialize(() => {
-    db.all("SELECT id, name FROM cities", (err, arr) => {
-        res.send(arr);
+app.get('/api/towns', function(req, res) {
+  db.serialize(function() {
+    db.all("SELECT id, name FROM cities", function(err, arr) {
+      res.send(arr);
     });
   });
 });
 
-app.get('/regions', (req, res) => {
+app.get('/api/regions', (req, res) => {
   db.serialize(() => {
     db.all("SELECT id, name FROM regions", (err, arr) => {
         res.send(arr);
@@ -50,7 +50,6 @@ app.get('/regions', (req, res) => {
   });
 });
 
-db.close();
 
 //END DELETE -------------------------------------------------------------------------
 

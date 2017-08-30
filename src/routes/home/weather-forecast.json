@@ -1,7 +1,7 @@
 [
   {
     "id": 11,
-    "town": "Saint-Petersburg",
+    "town": "Saint Petersburg",
     "region": "Leningrad region",
     "temperatureDay": "+14",
     "temperatureNight": "+10",
@@ -15,8 +15,8 @@
   },
   {
     "id": 12,
-    "town": "Pavlovsk",
-    "region": "Leningrad region",
+    "town": "Vladivostok",
+    "region": "Primorsk region",
     "temperatureDay": "+15",
     "temperatureNight": "+10",
     "temperatureWater": "+7",
@@ -29,8 +29,8 @@
   },
   {
     "id": 13,
-    "town": "Pushkin",
-    "region": "Leningrad region",
+    "town": "Kaliningrad",
+    "region": "Kaliningrad region",
     "temperatureDay": "+15",
     "temperatureNight": "+11",
     "temperatureWater": "+8",
@@ -43,7 +43,7 @@
   },
   {
     "id": 21,
-    "town": "Zheleznogorsk",
+    "town": "Krasnoyarsk",
     "region": "Krasnoyarsk region",
     "temperatureDay": "+29",
     "temperatureNight": "+18",
@@ -57,7 +57,7 @@
   },
   {
     "id": 22,
-    "town": "Sosnovoborsk",
+    "town": "Norilsk",
     "region": "Krasnoyarsk region",
     "temperatureDay": "+31",
     "temperatureNight": "+19",
