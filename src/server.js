@@ -23,20 +23,23 @@ const app = express();
 
 //DELETE CODE ------------------------------------------------------------------------
 
+import fs from 'fs';
 import request from 'request';
 import sqlite3 from 'sqlite3';
 
 let db = new sqlite3.Database('database.sqlite');
 
-app.get('/weather', (req, res) => {
-  request('https://api.gismeteo.ru/v2/weather/current/?latitude=54.35&longitude=52.52', function (error, response, body) {
-    res.send(body);
-  });
+app.get('/api/weather/:townID', (req, res) => {
+    let path = `src/server/detailed_forecast/${req.params.townID}.json`;
+
+    fs.readFile(path, 'utf8', (err, data) => {
+      res.send(data);
+    });
 });
 
-app.get('/api/towns', function(req, res) {
-  db.serialize(function() {
-    db.all("SELECT id, name FROM cities", function(err, arr) {
+app.get('/api/towns', (req, res) => {
+  db.serialize(() => {
+    db.all("SELECT id, name FROM cities", (err, arr) => {
       res.send(arr);
     });
   });

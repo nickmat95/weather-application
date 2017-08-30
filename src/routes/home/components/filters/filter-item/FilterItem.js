@@ -58,8 +58,10 @@ class FilterItem extends React.Component {
 
   render() {
 
-    let getItems = (this.props.filterID == 1) ? this.state.towns : this.state.regions;
-    let placeholderText = (this.props.filterID == 1) ? 'enter city' : (this.props.filterID == 2) ? 'enter region' : 'enter value';
+    let getItems = (this.props.filterID === 1) ? this.state.towns : this.state.regions;
+    let placeholderText = (this.props.filterID === 1) ? 'enter city' : (this.props.filterID === 2) ? 'enter region' : 'enter value';
+
+    getItems = (getItems) ? getItems : [];
 
     return (
       <div className={s.filters__filterWrap}>

@@ -6,6 +6,9 @@ import s from './detailed.css';
 import detailedWeatherForecast from './detailed-weather-forecast.json';
 import SelectedDay from './components/selected-day/SelectedDay';
 import WeekDays from './components/week-days/WeekDays';
+import ReactResource from 'react-resource';
+
+const TownDetailed = new ReactResource('/api/weather/{:townID}', {townID: ':townID'});
 
 class Detailed extends React.Component {
   constructor(props) {
@@ -14,6 +17,17 @@ class Detailed extends React.Component {
     this.state = {
       towns: detailedWeatherForecast
     };
+
+    const detailedForecast = new TownDetailed({townID: this.props.townID});
+
+    detailedForecast.$query()
+    .then(result => {
+      this.setState({
+        displayedTown: result
+      })
+    })
+    .catch(error => console.error(error));
+
   } 
 
   static propTypes = { 
@@ -48,8 +62,11 @@ class Detailed extends React.Component {
   }
 
   render() {
+
     let displayedTownWeather = this.preparationArr();
     let weekForecast = displayedTownWeather.weekForecast;
+
+      console.log('>>', this.state.displayedTown);
 
     return (
       <div className={s.root}>
