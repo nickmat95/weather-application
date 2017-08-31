@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './detailed.css';
-import detailedWeatherForecast from './detailed-weather-forecast.json';
 import SelectedDay from './components/selected-day/SelectedDay';
 import WeekDays from './components/week-days/WeekDays';
 import ReactResource from 'react-resource';
@@ -15,7 +14,6 @@ class Detailed extends React.Component {
     super(props);
 
     this.state = {
-      towns: detailedWeatherForecast,
       displayedTown: {
         id: 0,
         town: 'default',

@@ -19,9 +19,18 @@ class FilterItem extends React.Component {
     super(props);
 
     this.state = {
-      value: ''
+      value: '',
+      towns: [],
+      region: []
     };
+  } 
 
+  static propTypes = {
+    filterID: PropTypes.string.isRequired,
+    updateFilter: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
     townList.$query()
     .then(result => {
       this.setState({
@@ -37,11 +46,6 @@ class FilterItem extends React.Component {
       })
     })
     .catch(error => console.error(error));
-  } 
-
-  static propTypes = {
-    filterID: PropTypes.string.isRequired,
-    updateFilter: PropTypes.func.isRequired,
   }
 
   filterChange = (event, value) => {
@@ -58,8 +62,8 @@ class FilterItem extends React.Component {
 
   render() {
 
-    let getItems = (this.props.filterID === 1) ? this.state.towns : this.state.regions;
-    let placeholderText = (this.props.filterID === 1) ? 'enter city' : (this.props.filterID === 2) ? 'enter region' : 'enter value';
+    let getItems = (Number(this.props.filterID) === 1) ? this.state.towns : this.state.regions;
+    let placeholderText = (Number(this.props.filterID) === 1) ? 'enter city' : (Number(this.props.filterID) === 2) ? 'enter region' : 'enter value';
 
     getItems = (getItems) ? getItems : [];
 

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
-import weatherForecast from './weather-forecast.json';
+import WeatherList from './components/weather-list/WeatherList'
 import Filters from './components/filters/Filters';
 import ReactResource from 'react-resource';
 
@@ -16,7 +16,8 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      displayedWeatherItems: []
+      displayedWeatherItems: [],
+      filteredItems: []
     };
   }
 
@@ -24,7 +25,8 @@ class Home extends React.Component {
     forecastList.$get()
     .then(result => {
         this.setState({
-          displayedWeatherItems: result
+          displayedWeatherItems: result,
+          filteredItems: result
         });
     })
     .catch(error => console.error(error));
@@ -34,15 +36,14 @@ class Home extends React.Component {
 
     filterValue = filterValue.toLowerCase();
 
-    this.setState({nameFilter: filterValue});
 
-    let displayedWeatherItems = weatherForecast.filter(el => {
-      let filterVal = (filterId == 1) ? el.town.toLowerCase() : el.region.toLowerCase();
+    let displayedItems = this.state.filteredItems.filter(el => {
+      let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();
       return filterVal.indexOf(filterValue) !== -1;
     });
 
     this.setState({
-      displayedWeatherItems: displayedWeatherItems
+      displayedWeatherItems: displayedItems
     });
   }
 
@@ -53,6 +54,7 @@ class Home extends React.Component {
   }
 
   render() {
+    
     return (
       <div className={s.root}>
         <div className={s.container}>
