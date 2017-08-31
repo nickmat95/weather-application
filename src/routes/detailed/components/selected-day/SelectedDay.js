@@ -4,28 +4,50 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './SelectedDay.css';
 
 class SelectedDay extends React.Component {
+
+    static propTypes = { 
+        displayedDate: PropTypes.shape({
+            cloudiness: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
+            dayNumber: PropTypes.number.isRequired,
+            humidity: PropTypes.number.isRequired,
+            image: PropTypes.string.isRequired,
+            precipitation: PropTypes.string.isRequired,
+            pressure: PropTypes.number.isRequired,
+            shortDate: PropTypes.string.isRequired,
+            temperatureDay: PropTypes.string.isRequired,
+            temperatureEvening: PropTypes.string.isRequired,
+            temperatureMorning: PropTypes.string.isRequired,
+            temperatureNight: PropTypes.string.isRequired,
+            temperatureWater: PropTypes.string.isRequired,
+            windSpeed: PropTypes.number.isRequired,
+        }),
+    };
+
     static defaultProps = {
         displayedDate: {
-            cloudiness: "",
-            date: "",
-            humidity: "",
-            image: "",
-            precipitation: "",
-            pressure: "", 
-            shortDate: "",
-            temperatureDay: "",
-            temperatureEvening: "",
-            temperatureMorning: "",
-            temperatureNight: "",
-            temperatureWater: "",
-            windSpeed: ""
+            cloudiness: '',
+            date: '',
+            dayNumber: 0,
+            humidity: 0,
+            image: '',
+            precipitation: '',
+            pressure: 0, 
+            shortDate: '',
+            temperatureDay: '',
+            temperatureEvening: '',
+            temperatureMorning: '',
+            temperatureNight: '',
+            temperatureWater: '',
+            windSpeed: 0
         }
     };
+
     render() {
         return (
             <div className={s.selectedDay}>
                 <p className={s.date}>{this.props.displayedDate.date}</p>
-                <div className={s.dayPart + ' ' + s.dayPart_theme_morning}>
+                <div className={`${s.dayPart} ${s.dayPart_theme_morning}`}>
                     <p className={s.dayPart__title}>Morning</p>
                     <div className={s.dayPart__iconWrap}>
                         <img className={s.dayPart__icon} src="" />
@@ -39,7 +61,7 @@ class SelectedDay extends React.Component {
                     <p className={s.dayPart__temperature}>{this.props.displayedDate.temperatureMorning}</p>
                 </div>
 
-                <div className={s.dayPart + ' ' + s.dayPart_theme_day}>
+                <div className={`${s.dayPart} ${s.dayPart_theme_day}`}>
                     <p className={s.dayPart__title}>Day</p>
                     <div className={s.dayPart__iconWrap}>
                         <img className={s.dayPart__icon} src="" />
@@ -53,7 +75,7 @@ class SelectedDay extends React.Component {
                     <p className={s.dayPart__temperature}>{this.props.displayedDate.temperatureDay}</p>
                 </div>
 
-                <div className={s.dayPart + ' ' + s.dayPart_theme_evening}>
+                <div className={`${s.dayPart} ${s.dayPart_theme_evening}`}>
                     <p className={s.dayPart__title}>Evening</p>
                     <div className={s.dayPart__iconWrap}>
                         <img className={s.dayPart__icon} src="" />
@@ -67,7 +89,7 @@ class SelectedDay extends React.Component {
                     <p className={s.dayPart__temperature}>{this.props.displayedDate.temperatureEvening}</p>
                 </div>
 
-                <div className={s.dayPart + ' ' + s.dayPart_theme_night}>
+                <div className={`${s.dayPart} ${s.dayPart_theme_night}`}>
                     <p className={s.dayPart__title}>Night</p>
                     <div className={s.dayPart__iconWrap}>
                         <img className={s.dayPart__icon} src="" />

@@ -15,20 +15,3 @@ export function sortItems(a, b, value) {
   }
   return aLower < bLower ? -1 : 1
 }
-
-/*export function getTowns() {
-  return [
-    { name: 'Saint-Petersburg' },
-    { name: 'Pavlovsk' },
-    { name: 'Pushkin' },
-    { name: 'Zheleznogorsk' },
-    { name: 'Sosnovoborsk' }
-  ]
-}
-
-export function getRegions() {
-  return [
-    { name: 'Leningrad region' },
-    { name: 'Krasnoyarsk region' }
-  ]
-}*/

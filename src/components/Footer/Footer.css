@@ -24,12 +24,12 @@
   font-size: 0.8em;
 }
 
-.getInfo__gismeteoLink {
+.getInfo__githubLink {
   color: turquoise;
   font-size: 0.8em;
   text-decoration: none;
 }
 
-.getInfo__gismeteoLink:hover {
+.getInfo__githubLink:hover {
   text-decoration: underline;
 }

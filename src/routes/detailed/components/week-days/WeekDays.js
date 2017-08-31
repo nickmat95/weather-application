@@ -15,8 +15,10 @@ class WeekDays extends React.Component {
     }
 
 	static propTypes = {
+        changeInfo: PropTypes.func.isRequired,
         items: PropTypes.arrayOf(
           PropTypes.shape({
+            dayNumber: PropTypes.number.isRequired,
             image: PropTypes.string.isRequired,
             temperatureMorning: PropTypes.string.isRequired,
             temperatureDay: PropTypes.string.isRequired,
@@ -35,7 +37,6 @@ class WeekDays extends React.Component {
     };
 
     getData = (date, dayNumber) => {
-
         this.setState({
             selected: dayNumber
         });
@@ -45,8 +46,7 @@ class WeekDays extends React.Component {
     }
 
     render() {
-
-    	let content = this.props.items.map((el) => {
+    	let content = this.props.items.map(el => {
     		return (
     			<WeekDay 
                     key={el.dayNumber}
@@ -60,6 +60,7 @@ class WeekDays extends React.Component {
     			/>
     		);
     	});
+
         return (
         	<div className={s.weekDays}>
         		{

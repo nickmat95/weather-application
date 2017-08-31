@@ -1,9 +1,8 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './FilterItem.css';
-import { matchItemToTerm, sortItems, styles } from './autocomplete-utils.js'
+import { matchItemToTerm, sortItems } from './autocomplete-utils.js'
 import Autocomplete from 'react-autocomplete';
 import ReactResource from 'react-resource';
 
@@ -31,7 +30,7 @@ class FilterItem extends React.Component {
   }
 
   componentDidMount() {
-    townList.$query()
+    townList.$get()
     .then(result => {
       this.setState({
         towns: result
@@ -39,7 +38,7 @@ class FilterItem extends React.Component {
     })
     .catch(error => console.error(error));
 
-    regionList.$query()
+    regionList.$get()
     .then(result => {
       this.setState({
         regions: result
@@ -49,7 +48,6 @@ class FilterItem extends React.Component {
   }
 
   filterChange = (event, value) => {
-
     this.setState({
       value: value
     });

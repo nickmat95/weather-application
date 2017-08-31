@@ -24,18 +24,16 @@ class Home extends React.Component {
   componentDidMount() {
     forecastList.$get()
     .then(result => {
-        this.setState({
-          displayedWeatherItems: result,
-          filteredItems: result
-        });
+      this.setState({
+        displayedWeatherItems: result,
+        filteredItems: result
+      });
     })
     .catch(error => console.error(error));
   }
 
   filterUpdate = (filterValue, filterId) => {
-
     filterValue = filterValue.toLowerCase();
-
 
     let displayedItems = this.state.filteredItems.filter(el => {
       let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();

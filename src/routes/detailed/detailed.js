@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
@@ -10,7 +9,8 @@ import ReactResource from 'react-resource';
 const TownDetailed = new ReactResource('/api/weather/{:townID}', {townID: ':townID'});
 
 class Detailed extends React.Component {
-  constructor(props) {
+
+  constructor(props) {  
     super(props);
 
     this.state = {
@@ -20,7 +20,6 @@ class Detailed extends React.Component {
         weekForecast: []
       }
     };
-
   } 
 
   static propTypes = { 
@@ -31,19 +30,13 @@ class Detailed extends React.Component {
     const detailedForecast = new TownDetailed({townID: this.props.townID});
 
     detailedForecast.$get()
-      .then(result => {
-        this.setState({
-          displayedTown: result,
-          displayedDate: result.weekForecast[0]
-        })
+    .then(result => {
+      this.setState({
+        displayedTown: result,
+        displayedDate: result.weekForecast[0]
       })
-      .catch(error => console.error(error));
-  }
-
-  todayDate() {
-    let date = new Date();
-
-    return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
+    })
+    .catch(error => console.error(error));
   }
 
   changeInfo = (weatherData) => {

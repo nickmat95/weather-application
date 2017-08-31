@@ -6,10 +6,29 @@ import s from './WeatherItem.css';
 import Link from 'components/Link';
 
 class WeatherItem extends React.Component {
+
+static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        townID: PropTypes.number.isRequired,
+        town: PropTypes.string.isRequired,
+        region: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        temperatureDay: PropTypes.string.isRequired,
+        temperatureNight: PropTypes.string.isRequired,
+        temperatureWater: PropTypes.string.isRequired,
+        cloudiness: PropTypes.string.isRequired,
+        precipitation: PropTypes.string.isRequired,
+        pressure: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+        windSpeed: PropTypes.number.isRequired,
+      }),
+    ),
+  };
+
   render() {
-    let link = `/detailed/${this.props.townID}`;
      return(
-        <Link className={s.weatherItem} to={link}>
+        <Link className={s.weatherItem} to={`/detailed/${this.props.townID}`}>
             <div className={s.weatherItem__iconWrap}>
                 <img className={s.weatherItem__icon} src={this.props.img} />
             </div>

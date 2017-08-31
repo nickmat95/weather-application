@@ -5,15 +5,17 @@ import s from './WeekDay.css';
 
 class WeekDay extends React.Component {
 
-	static propTypes = { 
+	static propTypes = {
+        active: PropTypes.number.isRequired,
 		date: PropTypes.string.isRequired,
+        dayNumber: PropTypes.number.isRequired,
 		image: PropTypes.string.isRequired,
 		temperatureDay: PropTypes.string.isRequired,
 		temperatureNight: PropTypes.string.isRequired,
+        getData: PropTypes.func.isRequired,
 	};
 
     isActive(value) {
-        console.log('>>', this.props.active, value)
         return (value === this.props.active) ? s.active :'default'
     }
 
@@ -23,7 +25,7 @@ class WeekDay extends React.Component {
 
     render() {
         return (
-        	<div className={s.day + ' ' + this.isActive(this.props.dayNumber)} onClick={this.addedDate}>
+        	<div className={`${s.day} ${this.isActive(this.props.dayNumber)}`} onClick={this.addedDate}>
         		<p className={s.day__name}>{this.props.date}</p>
         		<div className={s.day__iconWrap}>
         			<img className={s.day__icon} src={this.props.image} />
