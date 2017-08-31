@@ -6,6 +6,7 @@ import s from './WeatherList.css';
 import WeatherItem from './weather-item/WeatherItem';
 
 class WeatherList extends React.Component {
+
   static propTypes = {
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -45,7 +46,6 @@ class WeatherList extends React.Component {
         />
       );
     });
-
 
     let content = (this.props.items.length > 0) ? displayedItems : <div className={s.weatherList__noInfoWrap}><span className={s.weatherList__noInfo}>Nothing to show!</span></div>;
 

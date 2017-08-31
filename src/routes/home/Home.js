@@ -21,7 +21,7 @@ class Home extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     forecastList.$get()
     .then(result => {
       this.setState({
@@ -51,8 +51,7 @@ class Home extends React.Component {
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-  render() {
-    
+  render() {  
     return (
       <div className={s.root}>
         <div className={s.container}>

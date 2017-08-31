@@ -32,9 +32,7 @@ static propTypes = {
             <div className={s.weatherItem__iconWrap}>
                 <img className={s.weatherItem__icon} src={this.props.img} />
             </div>
-            <p className={s.weatherItem__town}>
-                {this.props.town}
-            </p>
+            <p className={s.weatherItem__town}>{this.props.town}</p>
             <p className={s.weatherItem__dayTemp} title="day temperature">{this.props.temperatureDay}</p>
             <p className={s.weatherItem__nightTemp} title="night temperature">{this.props.temperatureNight}</p>
             <p className={s.weatherItem__weatherIndicator}><span className={s.weatherItem__weatherIndicatorTitle}>temperature water:</span> {this.props.temperatureWater}</p>

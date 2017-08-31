@@ -29,7 +29,7 @@ class FilterItem extends React.Component {
     updateFilter: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     townList.$get()
     .then(result => {
       this.setState({

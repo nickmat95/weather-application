@@ -15,10 +15,8 @@ class WeekDay extends React.Component {
         getData: PropTypes.func.isRequired,
 	};
 
-    isActive(value) {
-        return (value === this.props.active) ? s.active :'default'
-    }
-
+    isActive = (value) => (value === this.props.active) ? s.active : 'default';
+    
 	addedDate = () => {
 		this.props.getData(this.props.date, this.props.dayNumber);
 	}

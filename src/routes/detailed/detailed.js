@@ -26,7 +26,7 @@ class Detailed extends React.Component {
     townID: PropTypes.number.isRequired,
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
     const detailedForecast = new TownDetailed({townID: this.props.townID});
 
     detailedForecast.$get()
