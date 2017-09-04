@@ -6,6 +6,7 @@ import s from './Home.css';
 import WeatherList from './components/weather-list/WeatherList'
 import Filters from './components/filters/Filters';
 import ReactResource from 'react-resource';
+import { connect } from 'react-redux';
 
 const Forecast = new ReactResource('/api/all_forecast/{:forecast}', {forecast: ':forecast'});
 const forecastList = new Forecast();
@@ -28,16 +29,20 @@ class Home extends React.Component {
         displayedWeatherItems: result,
         filteredItems: result
       });
+
+      this.props.weatherItems(result);
+
     })
     .catch(error => console.error(error));
   }
 
   filterUpdate = (filterValue, filterId) => {
+
     filterValue = filterValue.toLowerCase();
 
     let displayedItems = this.state.filteredItems.filter(el => {
       let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();
-      return filterVal.indexOf(filterValue) !== -1;
+      return filterVal.includes(filterValue);
     });
 
     this.setState({
@@ -51,7 +56,9 @@ class Home extends React.Component {
     return date.toLocaleString("en-US", { year: 'numeric', month: 'long', weekday: 'short', day: 'numeric' });
   }
 
-  render() {  
+  render() {
+    console.log('->>', this.props);
+    
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -64,4 +71,13 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(s)(Home);
+export default connect(
+  state => ({
+    displayedItems: state.weatherItems[0]
+  }),
+  dispatch => ({
+    weatherItems: (item) => {
+      dispatch({ type: 'DEFAULT', payload: item });
+    }
+  })
+)(withStyles(s)(Home));

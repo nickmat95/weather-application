@@ -1,9 +1,9 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './WeatherItem.css';
 import Link from 'components/Link';
+import { connect } from 'react-redux';
 
 class WeatherItem extends React.Component {
 
@@ -46,4 +46,9 @@ static propTypes = {
    }
 }
 
-export default withStyles(s)(WeatherItem);
+export default connect(
+  state => ({
+  }),
+  dispatch => ({
+  })
+)(withStyles(s)(WeatherItem));

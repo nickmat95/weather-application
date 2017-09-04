@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Filters.css';
 import FilterItem from './filter-item/FilterItem';
+import { connect } from 'react-redux';
 
 class Filters extends React.Component {
 
@@ -29,4 +30,9 @@ class Filters extends React.Component {
   }
 }
 
-export default withStyles(s)(Filters);
+export default connect(
+  state => ({
+  }),
+  dispatch => ({
+  })
+)(withStyles(s)(Filters));

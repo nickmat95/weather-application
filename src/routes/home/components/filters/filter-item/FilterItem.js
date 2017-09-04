@@ -5,6 +5,7 @@ import s from './FilterItem.css';
 import { matchItemToTerm, sortItems } from './autocomplete-utils.js'
 import Autocomplete from 'react-autocomplete';
 import ReactResource from 'react-resource';
+import { connect } from 'react-redux';
 
 const Town = new ReactResource('/api/towns/{:town}', {town: ':town'});
 const townList = new Town();
@@ -18,9 +19,7 @@ class FilterItem extends React.Component {
     super(props);
 
     this.state = {
-      value: '',
-      towns: [],
-      region: []
+      value: ''
     };
   } 
 
@@ -32,22 +31,21 @@ class FilterItem extends React.Component {
   componentDidMount = () => {
     townList.$get()
     .then(result => {
-      this.setState({
-        towns: result
-      })
+      this.props.takeTownsList(result);
     })
     .catch(error => console.error(error));
 
     regionList.$get()
     .then(result => {
-      this.setState({
-        regions: result
-      })
+      this.props.takeRegionsList(result);
     })
     .catch(error => console.error(error));
   }
 
   filterChange = (event, value) => {
+
+    this.props.takeFilterValue(value);
+
     this.setState({
       value: value
     });
@@ -59,8 +57,9 @@ class FilterItem extends React.Component {
   }
 
   render() {
-
-    let getItems = (Number(this.props.filterID) === 1) ? this.state.towns : this.state.regions;
+    console.log('filter props:', this.props.value);
+    
+    let getItems = (Number(this.props.filterID) === 1) ? this.props.towns : this.props.regions;
     let placeholderText = (Number(this.props.filterID) === 1) ? 'enter city' : (Number(this.props.filterID) === 2) ? 'enter region' : 'enter value';
 
     getItems = (getItems) ? getItems : [];
@@ -89,4 +88,22 @@ class FilterItem extends React.Component {
   }
 }
 
-export default withStyles(s)(FilterItem);
+export default  connect(
+  state => ({
+    filteredItems: state.weatherItems[0],
+    towns: state.takeTownsList[0],
+    regions: state.takeRegionsList[0],
+    value: state.takeFilterValue[0]
+  }),
+  dispatch => ({
+    takeRegionsList: (item) => {
+      dispatch({ type: 'REGIONS', payload: item });
+    },
+    takeTownsList: (item) => {
+      dispatch({ type: 'TOWNS', payload: item });
+    },
+    takeFilterValue: (item) => {
+      dispatch({ type: 'FILTER_VALUE', payload: item });
+    }
+  })
+)(withStyles(s)(FilterItem));

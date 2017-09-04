@@ -1,9 +1,9 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './WeatherList.css';
 import WeatherItem from './weather-item/WeatherItem';
+import { connect } from 'react-redux';
 
 class WeatherList extends React.Component {
 
@@ -59,4 +59,9 @@ class WeatherList extends React.Component {
   }
 }
 
-export default withStyles(s)(WeatherList);
+export default connect(
+  state => ({
+  }),
+  dispatch => ({
+  })
+)(withStyles(s)(WeatherList));
