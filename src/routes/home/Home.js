@@ -11,8 +11,8 @@ import { getWeatherItems } from '../../actions/weatherForecast.js'
 class Home extends React.Component {
 
   static defaultProps = {
-        displayedItems: []
-    };
+    displayedItems: []
+  };
 
   componentDidMount = () => {
     this.props.weatherItems();
@@ -25,7 +25,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log('>>', this.props);
     return (
       <div className={s.root}>
         <div className={s.container}>

@@ -4,14 +4,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './FilterItem.css';
 import { matchItemToTerm, sortItems } from './autocomplete-utils.js'
 import Autocomplete from 'react-autocomplete';
-import ReactResource from 'react-resource';
 import { connect } from 'react-redux';
-
-const Town = new ReactResource('/api/towns/{:town}', {town: ':town'});
-const townList = new Town();
-
-const Region = new ReactResource('/api/regions/{:region}', {region: ':region'});
-const regionList = new Region();
+import { getTownsAutocomplete, getRegionsAutocomplete }
 
 class FilterItem extends React.Component {
 
@@ -28,17 +22,8 @@ class FilterItem extends React.Component {
   }
 
   componentDidMount = () => {
-    townList.$get()
-    .then(result => {
-      this.props.takeTownsList(result);
-    })
-    .catch(error => console.error(error));
-
-    regionList.$get()
-    .then(result => {
-      this.props.takeRegionsList(result);
-    })
-    .catch(error => console.error(error));
+    this.props.takeTownsList();
+    this.props.takeRegionsList();
   }
 
   filterChange = (event, value) => {
@@ -98,10 +83,10 @@ export default  connect(
   }),
   dispatch => ({
     takeRegionsList: (item) => {
-      dispatch({ type: 'REGIONS', payload: item });
+      dispatch(getRegionsAutocomplete());
     },
-    takeTownsList: (item) => {
-      dispatch({ type: 'TOWNS', payload: item });
+    takeTownsList: () => {
+      dispatch(getTownsAutocomplete());
     },
     filterItems: (item) => {
       dispatch({ type: 'FILTER', payload: item });
