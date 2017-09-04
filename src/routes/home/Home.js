@@ -5,11 +5,8 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import WeatherList from './components/weather-list/WeatherList'
 import Filters from './components/filters/Filters';
-import ReactResource from 'react-resource';
 import { connect } from 'react-redux';
-
-const Forecast = new ReactResource('/api/all_forecast/{:forecast}', {forecast: ':forecast'});
-const forecastList = new Forecast();
+import { getWeatherItems } from '../../actions/weatherForecast.js'
 
 class Home extends React.Component {
 
@@ -18,11 +15,7 @@ class Home extends React.Component {
     };
 
   componentDidMount = () => {
-    forecastList.$get()
-    .then(result => {
-      this.props.weatherItems(result);
-    })
-    .catch(error => console.error(error));
+    this.props.weatherItems();
   }
 
   todayDate = () => {
@@ -32,6 +25,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log('>>', this.props);
     return (
       <div className={s.root}>
         <div className={s.container}>
@@ -46,11 +40,12 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0]
+    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0],
+    test: []
   }),
   dispatch => ({
-    weatherItems: (item) => {
-      dispatch({ type: 'DEFAULT', payload: item });
+    weatherItems: () => {
+      dispatch(getWeatherItems());
     }
   })
 )(withStyles(s)(Home));
