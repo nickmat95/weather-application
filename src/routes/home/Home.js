@@ -13,41 +13,16 @@ const forecastList = new Forecast();
 
 class Home extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      displayedWeatherItems: [],
-      filteredItems: []
+  static defaultProps = {
+        displayedItems: []
     };
-  }
 
   componentDidMount = () => {
     forecastList.$get()
     .then(result => {
-      this.setState({
-        displayedWeatherItems: result,
-        filteredItems: result
-      });
-
       this.props.weatherItems(result);
-
     })
     .catch(error => console.error(error));
-  }
-
-  filterUpdate = (filterValue, filterId) => {
-
-    filterValue = filterValue.toLowerCase();
-
-    let displayedItems = this.state.filteredItems.filter(el => {
-      let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();
-      return filterVal.includes(filterValue);
-    });
-
-    this.setState({
-      displayedWeatherItems: displayedItems
-    });
   }
 
   todayDate = () => {
@@ -57,14 +32,12 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log('->>', this.props);
-    
     return (
       <div className={s.root}>
         <div className={s.container}>
           <p className={s.todayDate}>{this.todayDate()}</p>
-          <Filters updateFilters={this.filterUpdate} />
-          <WeatherList items={this.state.displayedWeatherItems} />
+          <Filters />
+          <WeatherList items={this.props.displayedItems} />
         </div>
       </div>
     );
@@ -73,7 +46,7 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    displayedItems: state.weatherItems[0]
+    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0]
   }),
   dispatch => ({
     weatherItems: (item) => {

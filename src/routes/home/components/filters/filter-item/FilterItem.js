@@ -25,7 +25,6 @@ class FilterItem extends React.Component {
 
   static propTypes = {
     filterID: PropTypes.string.isRequired,
-    updateFilter: PropTypes.func.isRequired,
   }
 
   componentDidMount = () => {
@@ -44,21 +43,23 @@ class FilterItem extends React.Component {
 
   filterChange = (event, value) => {
 
-    this.props.takeFilterValue(value);
-
     this.setState({
       value: value
     });
 
-    let filterValue = value;
+    let filterValue = value.toLowerCase();
     let filterId = this.props.filterID;
 
-    this.props.updateFilter(filterValue, filterId);
+    let displayedItems = this.props.filteredItems.filter(el => {
+      let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();
+      return filterVal.includes(filterValue);
+    });
+
+    this.props.filterItems(displayedItems);
+
   }
 
   render() {
-    console.log('filter props:', this.props.value);
-    
     let getItems = (Number(this.props.filterID) === 1) ? this.props.towns : this.props.regions;
     let placeholderText = (Number(this.props.filterID) === 1) ? 'enter city' : (Number(this.props.filterID) === 2) ? 'enter region' : 'enter value';
 
@@ -93,7 +94,7 @@ export default  connect(
     filteredItems: state.weatherItems[0],
     towns: state.takeTownsList[0],
     regions: state.takeRegionsList[0],
-    value: state.takeFilterValue[0]
+    test: state
   }),
   dispatch => ({
     takeRegionsList: (item) => {
@@ -102,8 +103,8 @@ export default  connect(
     takeTownsList: (item) => {
       dispatch({ type: 'TOWNS', payload: item });
     },
-    takeFilterValue: (item) => {
-      dispatch({ type: 'FILTER_VALUE', payload: item });
+    filterItems: (item) => {
+      dispatch({ type: 'FILTER', payload: item });
     }
   })
 )(withStyles(s)(FilterItem));

@@ -1,8 +1,8 @@
 const initialState = [];
 
-export default function takeFilterValue(state = initialState, action) {
+export default function filterItems(state = initialState, action) {
   switch(action.type) {
-  	case 'FILTER_VALUE':
+  	case 'FILTER':
   		return [
 	  		action.payload
 	  		];

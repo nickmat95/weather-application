@@ -7,22 +7,17 @@ import FilterItem from './filter-item/FilterItem';
 import { connect } from 'react-redux';
 
 class Filters extends React.Component {
-
-  static propTypes = {
-    updateFilters: PropTypes.func.isRequired,
-  }
-
   render() {
     return (
       <div className={s.filters}>
         <div className={s.filters__item}>
           {
-            <FilterItem filterID="1" updateFilter={this.props.updateFilters} />
+            <FilterItem filterID="1" />
           }
         </div>
         <div className={s.filters__item}>
           {
-            <FilterItem filterID="2" updateFilter={this.props.updateFilters} />
+            <FilterItem filterID="2" />
           }
         </div>
       </div>
