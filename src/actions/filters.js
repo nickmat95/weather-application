@@ -20,5 +20,4 @@ export const getRegionsAutocomplete = () => dispatch =>  {
       dispatch({ type: 'REGIONS', payload: result });
     })
     .catch(error => console.error(error));
-    }
 }

@@ -2,28 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './WeekDay.css';
+import { connect } from 'react-redux';
 
 class WeekDay extends React.Component {
 
 	static propTypes = {
-        active: PropTypes.number.isRequired,
 		date: PropTypes.string.isRequired,
         dayNumber: PropTypes.number.isRequired,
 		image: PropTypes.string.isRequired,
 		temperatureDay: PropTypes.string.isRequired,
 		temperatureNight: PropTypes.string.isRequired,
-        getData: PropTypes.func.isRequired,
 	};
+
+    static defaultProps = { 
+        active: 1
+    };
 
     isActive = (value) => (value === this.props.active) ? s.active : 'default';
     
-	addedDate = () => {
-		this.props.getData(this.props.date, this.props.dayNumber);
+	chosenDate = () => {
+        this.props.takeActiveDay(this.props.dayNumber);
+
+        let weatherData = this.props.allDays.filter(el => el.shortDate == this.props.date);
+        this.props.choosenDate(weatherData[0])
 	}
 
     render() {
         return (
-        	<div className={`${s.day} ${this.isActive(this.props.dayNumber)}`} onClick={this.addedDate}>
+        	<div className={`${s.day} ${this.isActive(this.props.dayNumber)}`} onClick={this.chosenDate}>
         		<p className={s.day__name}>{this.props.date}</p>
         		<div className={s.day__iconWrap}>
         			<img className={s.day__icon} src={this.props.image} />
@@ -35,4 +41,17 @@ class WeekDay extends React.Component {
     }
 }
 
-export default withStyles(s)(WeekDay);
+export default connect(
+  state => ({
+    allDays: state.displayedTown[2],
+    active: state.takeActiveDay[0]
+  }),
+  dispatch => ({
+    choosenDate: (item) => {
+        dispatch({ type: 'CHOOSEN_DATE', payload: item });
+    },
+    takeActiveDay: (dayNumber) => {
+        dispatch({ type: 'ACTIVE', payload: dayNumber });
+    }
+  })
+)(withStyles(s)(WeekDay));

@@ -3,19 +3,11 @@ import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './WeekDays.css';
 import WeekDay from './week-day/WeekDay';
+import { connect } from 'react-redux';
 
 class WeekDays extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selected: 1
-        };
-    }
-
 	static propTypes = {
-        changeInfo: PropTypes.func.isRequired,
         items: PropTypes.arrayOf(
           PropTypes.shape({
             dayNumber: PropTypes.number.isRequired,
@@ -36,15 +28,6 @@ class WeekDays extends React.Component {
         ),
     };
 
-    getData = (date, dayNumber) => {
-        this.setState({
-            selected: dayNumber
-        });
-
-        let weatherData = this.props.items.filter(el => el.shortDate == date);
-        this.props.changeInfo(weatherData[0]);
-    }
-
     render() {
     	let content = this.props.items.map(el => {
     		return (
@@ -55,8 +38,6 @@ class WeekDays extends React.Component {
     				image={el.image}
     				temperatureDay={el.temperatureDay}
     				temperatureNight={el.temperatureNight}
-                    getData={this.getData}
-                    active={this.state.selected}
     			/>
     		);
     	});
@@ -71,4 +52,9 @@ class WeekDays extends React.Component {
     }
 }
 
-export default withStyles(s)(WeekDays);
+export default connect(
+  state => ({
+  }),
+  dispatch => ({
+  })
+)(withStyles(s)(WeekDays));

@@ -6,7 +6,7 @@ import s from './Home.css';
 import WeatherList from './components/weather-list/WeatherList'
 import Filters from './components/filters/Filters';
 import { connect } from 'react-redux';
-import { getWeatherItems } from '../../actions/weatherForecast.js'
+import { getWeatherItems } from '../../actions/weatherForecast.js';
 
 class Home extends React.Component {
 
@@ -39,8 +39,7 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0],
-    test: []
+    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0]
   }),
   dispatch => ({
     weatherItems: () => {

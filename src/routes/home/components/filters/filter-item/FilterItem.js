@@ -5,7 +5,7 @@ import s from './FilterItem.css';
 import { matchItemToTerm, sortItems } from './autocomplete-utils.js'
 import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
-import { getTownsAutocomplete, getRegionsAutocomplete }
+import { getTownsAutocomplete, getRegionsAutocomplete } from '../../../../../actions/filters.js';
 
 class FilterItem extends React.Component {
 
@@ -41,7 +41,6 @@ class FilterItem extends React.Component {
     });
 
     this.props.filterItems(displayedItems);
-
   }
 
   render() {
@@ -79,7 +78,6 @@ export default  connect(
     filteredItems: state.weatherItems[0],
     towns: state.takeTownsList[0],
     regions: state.takeRegionsList[0],
-    test: state
   }),
   dispatch => ({
     takeRegionsList: (item) => {
