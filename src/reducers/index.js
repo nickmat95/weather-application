@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
-import weatherItems from './weatherItems.js';
-import takeRegionsList from './takeRegionsList';
-import takeTownsList from './takeTownsList';
-import filterItems from './filterItems.js';
-import displayedTown from './displayedTown.js';
-import choosenDate from './choosenDate.js';
-import takeActiveDay from './takeActiveDay.js';
+import takeWeatherItems from './take-weather-items.js';
+import takeRegionsList from './take-regions-list.js';
+import takeTownsList from './take-towns-list.js';
+import filterItems from './filter-items.js';
+import displayedTown from './displayed-town.js';
+import choosenDate from './choosen-date.js';
+import takeActiveDay from './take-active-day.js';
 
 export default combineReducers({
-  weatherItems,
+  takeWeatherItems,
   takeRegionsList,
   takeTownsList,
   filterItems,

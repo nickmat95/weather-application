@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './WeatherList.css';
-import WeatherItem from './weather-item/WeatherItem';
+import s from './Weather-List.css';
+import WeatherItem from './weather-item/Weather-Item';
 import { connect } from 'react-redux';
 
 class WeatherList extends React.Component {

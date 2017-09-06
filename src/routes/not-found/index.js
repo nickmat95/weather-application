@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../components/Layout';
-import NotFound from './NotFound';
+import NotFound from './Not-Found';
 
 const title = 'Page Not Found';
 

@@ -3,7 +3,6 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt';
-//import expressGraphQL from 'express-graphql';
 import jwt from 'jsonwebtoken';
 import fetch from 'node-fetch';
 import React from 'react';
@@ -11,26 +10,26 @@ import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
 import App from './components/App';
 import Html from './components/Html';
-import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
-import errorPageStyle from './routes/error/ErrorPage.css';
-import createFetch from './createFetch';
+import { ErrorPageWithoutStyle } from './routes/error/Error-Page';
+import errorPageStyle from './routes/error/Error-Page.css';
+import createFetch from './create-fetch.js';
 import router from './router';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
-
-const app = express();
-
-
-//DELETE CODE ------------------------------------------------------------------------
-
 import fs from 'fs';
 import request from 'request';
 import sqlite3 from 'sqlite3';
 
+const app = express();
+
+//
+// Rest api for getting data
+// -----------------------------------------------------------------------------
+
 let db = new sqlite3.Database('database.sqlite');
 
 app.get('/api/all_forecast', (req, res) => {
-    let path = `src/server/weather-forecast.json`;
+    let path = `src/weather-forecasts/weather-forecast.json`;
 
     fs.readFile(path, 'utf8', (err, data) => {
       res.send(data);
@@ -38,7 +37,7 @@ app.get('/api/all_forecast', (req, res) => {
 });
 
 app.get('/api/weather/:townID', (req, res) => {
-    let path = `src/server/detailed_forecast/${req.params.townID}.json`;
+    let path = `src/weather-forecasts/detailed-forecast/${req.params.townID}.json`;
 
     fs.readFile(path, 'utf8', (err, data) => {
       res.send(data);
@@ -60,10 +59,6 @@ app.get('/api/regions', (req, res) => {
     });
   });
 });
-
-
-//END DELETE -------------------------------------------------------------------------
-
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the

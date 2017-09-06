@@ -1,8 +1,5 @@
-
-
 const routes = {
   path: '/',
-
 
   children: [
     {
@@ -19,7 +16,6 @@ const routes = {
       load: () => import(/* webpackChunkName: 'not-found' */ './not-found'),
     },
   ],
-
 
   async action({ next }) {
 

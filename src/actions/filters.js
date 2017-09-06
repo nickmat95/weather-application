@@ -7,7 +7,7 @@ const Region = new ReactResource('/api/regions/{:region}', {region: ':region'});
 const regionList = new Region();
 
 export const getTownsAutocomplete = () => dispatch =>  {
-	townList.$get()
+	townList.$query()
     .then(result => {
     	dispatch({ type: 'TOWNS', payload: result });
     })
@@ -15,7 +15,7 @@ export const getTownsAutocomplete = () => dispatch =>  {
 }
 
 export const getRegionsAutocomplete = () => dispatch =>  {
-	regionList.$get()
+	regionList.$query()
     .then(result => {
       dispatch({ type: 'REGIONS', payload: result });
     })

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './WeekDay.css';
+import s from './Week-Day.css';
 import { connect } from 'react-redux';
 
 class WeekDay extends React.Component {
@@ -24,7 +24,7 @@ class WeekDay extends React.Component {
         this.props.takeActiveDay(this.props.dayNumber);
 
         let weatherData = this.props.allDays.filter(el => el.shortDate == this.props.date);
-        this.props.choosenDate(weatherData[0])
+        this.props.choosenDate(weatherData[0]);
 	}
 
     render() {
@@ -47,11 +47,7 @@ export default connect(
     active: state.takeActiveDay[0]
   }),
   dispatch => ({
-    choosenDate: (item) => {
-        dispatch({ type: 'CHOOSEN_DATE', payload: item });
-    },
-    takeActiveDay: (dayNumber) => {
-        dispatch({ type: 'ACTIVE', payload: dayNumber });
-    }
+    choosenDate: (item) => dispatch({ type: 'CHOOSEN_DATE', payload: item }),
+    takeActiveDay: (dayNumber) => dispatch({ type: 'ACTIVE', payload: dayNumber })
   })
 )(withStyles(s)(WeekDay));

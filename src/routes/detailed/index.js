@@ -1,5 +1,5 @@
 import React from 'react';
-import Detailed from './detailed';
+import Detailed from './Detailed';
 import Layout from '../../components/Layout';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';

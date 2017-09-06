@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './WeekDays.css';
-import WeekDay from './week-day/WeekDay';
+import s from './Week-Days.css';
+import WeekDay from './week-day/Week-Day';
 import { connect } from 'react-redux';
 
 class WeekDays extends React.Component {

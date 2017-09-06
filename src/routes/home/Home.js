@@ -3,10 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
-import WeatherList from './components/weather-list/WeatherList'
+import WeatherList from './components/weather-list/Weather-List';
 import Filters from './components/filters/Filters';
 import { connect } from 'react-redux';
-import { getWeatherItems } from '../../actions/weatherForecast.js';
+import { getWeatherItems } from '../../actions/weather-forecast.js';
 
 class Home extends React.Component {
 
@@ -14,9 +14,7 @@ class Home extends React.Component {
     displayedItems: []
   };
 
-  componentDidMount = () => {
-    this.props.weatherItems();
-  }
+  componentDidMount = () => this.props.takeWeatherItems();
 
   todayDate = () => {
     let date = new Date();
@@ -39,11 +37,9 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.weatherItems[0]
+    displayedItems: (state.filterItems[0]) ? state.filterItems[0] : state.takeWeatherItems[0]
   }),
   dispatch => ({
-    weatherItems: () => {
-      dispatch(getWeatherItems());
-    }
+    takeWeatherItems: () => dispatch(getWeatherItems())
   })
 )(withStyles(s)(Home));

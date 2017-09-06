@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './FilterItem.css';
-import { matchItemToTerm, sortItems } from './autocomplete-utils.js'
+import s from './Filter-Item.css';
+import { matchItemToTerm, sortItems } from './autocomplete-utils.js';
 import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
 import { getTownsAutocomplete, getRegionsAutocomplete } from '../../../../../actions/filters.js';
@@ -75,19 +75,13 @@ class FilterItem extends React.Component {
 
 export default  connect(
   state => ({
-    filteredItems: state.weatherItems[0],
+    filteredItems: state.takeWeatherItems[0],
     towns: state.takeTownsList[0],
     regions: state.takeRegionsList[0],
   }),
   dispatch => ({
-    takeRegionsList: (item) => {
-      dispatch(getRegionsAutocomplete());
-    },
-    takeTownsList: () => {
-      dispatch(getTownsAutocomplete());
-    },
-    filterItems: (item) => {
-      dispatch({ type: 'FILTER', payload: item });
-    }
+    takeRegionsList: (item) => dispatch(getRegionsAutocomplete()),
+    takeTownsList: () => dispatch(getTownsAutocomplete()),
+    filterItems: (item) => dispatch({ type: 'FILTER', payload: item })
   })
 )(withStyles(s)(FilterItem));

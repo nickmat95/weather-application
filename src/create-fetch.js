@@ -1,4 +1,3 @@
-
 type Fetch = (url: string, options: ?any) => Promise<any>;
 
 type Options = {

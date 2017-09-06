@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Filters.css';
-import FilterItem from './filter-item/FilterItem';
+import FilterItem from './filter-item/Filter-Item';
 import { connect } from 'react-redux';
 
 class Filters extends React.Component {

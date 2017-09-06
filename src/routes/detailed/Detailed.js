@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './detailed.css';
-import SelectedDay from './components/selected-day/SelectedDay';
-import WeekDays from './components/week-days/WeekDays';
-//import ReactResource from 'react-resource';
+import s from './Detailed.css';
+import SelectedDay from './components/selected-day/Selected-Day';
+import WeekDays from './components/week-days/Week-Days';
 import { connect } from 'react-redux';
-import { getAllDetailedForecast } from '../../actions/weatherForecast.js';
-
-//const TownDetailed = new ReactResource('/api/weather/{:townID}', {townID: ':townID'});
+import { getAllDetailedForecast } from '../../actions/weather-forecast.js';
 
 class Detailed extends React.Component {
 
@@ -24,9 +21,7 @@ class Detailed extends React.Component {
     }
   };
 
-  componentDidMount = () => {
-    this.props.displayedTownForecast(this.props.townID);
-  }
+  componentDidMount = () => this.props.displayedTownForecast(this.props.townID);
 
   render() {
 
@@ -51,8 +46,6 @@ export default connect(
     displayedDate: (state.choosenDate[0]) ? state.choosenDate[0] : state.displayedTown[1]
   }),
   dispatch => ({
-    displayedTownForecast: (townID) => {
-      dispatch(getAllDetailedForecast(townID));
-    }
+    displayedTownForecast: (townID) => dispatch(getAllDetailedForecast(townID))
   })
 )(withStyles(s)(Detailed));
