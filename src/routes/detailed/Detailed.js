@@ -5,34 +5,28 @@ import s from './Detailed.css';
 import SelectedDay from './components/selected-day/Selected-Day';
 import WeekDays from './components/week-days/Week-Days';
 import { connect } from 'react-redux';
-import { getAllDetailedForecast } from '../../actions/weather-forecast.js';
 
 class Detailed extends React.Component {
 
   static propTypes = { 
-    townID: PropTypes.number.isRequired,
+    detailedForecast: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      region: PropTypes.string.isRequired,
+      town: PropTypes.string.isRequired,
+      weekForecast: PropTypes.array.isRequired,
+    }),
   };
-
-  static defaultProps = { 
-    displayedTown: {
-      id: 0,
-      town: '',
-      weekForecast: []
-    }
-  };
-
-  componentDidMount = () => this.props.displayedTownForecast(this.props.townID);
 
   render() {
 
-    let displayedTownWeather = this.props.displayedTown;
+    let displayedTownWeather = this.props.detailedForecast;
     let weekForecast = displayedTownWeather.weekForecast;
 
     return (
       <div className={s.root}>
         <div className={s.container}>
         	<h1 className={s.title}>Weather in {displayedTownWeather.town}</h1>
-        	<SelectedDay displayedDate={this.props.displayedDate} />
+        	<SelectedDay displayedDate={(this.props.displayedDate) ? this.props.displayedDate : weekForecast[0]} />
           <WeekDays items={weekForecast} />
         </div>
       </div>
@@ -42,10 +36,8 @@ class Detailed extends React.Component {
 
 export default connect(
   state => ({
-    displayedTown: state.displayedTown[0],
-    displayedDate: (state.choosenDate[0]) ? state.choosenDate[0] : state.displayedTown[1]
+    displayedDate: state.choosenDate[0]
   }),
   dispatch => ({
-    displayedTownForecast: (townID) => dispatch(getAllDetailedForecast(townID))
   })
 )(withStyles(s)(Detailed));

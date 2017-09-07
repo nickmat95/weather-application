@@ -12,6 +12,7 @@ class WeekDay extends React.Component {
 		image: PropTypes.string.isRequired,
 		temperatureDay: PropTypes.string.isRequired,
 		temperatureNight: PropTypes.string.isRequired,
+        weekForecast: PropTypes.array.isRequired,
 	};
 
     static defaultProps = { 
@@ -23,7 +24,7 @@ class WeekDay extends React.Component {
 	chosenDate = () => {
         this.props.takeActiveDay(this.props.dayNumber);
 
-        let weatherData = this.props.allDays.filter(el => el.shortDate == this.props.date);
+        let weatherData = this.props.weekForecast.filter(el => el.shortDate == this.props.date);
         this.props.choosenDate(weatherData[0]);
 	}
 
@@ -43,7 +44,6 @@ class WeekDay extends React.Component {
 
 export default connect(
   state => ({
-    allDays: state.displayedTown[2],
     active: state.takeActiveDay[0]
   }),
   dispatch => ({

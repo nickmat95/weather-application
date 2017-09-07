@@ -5,7 +5,6 @@ import s from './Filter-Item.css';
 import { matchItemToTerm, sortItems } from './autocomplete-utils.js';
 import Autocomplete from 'react-autocomplete';
 import { connect } from 'react-redux';
-import { getTownsAutocomplete, getRegionsAutocomplete } from '../../../../../actions/filters.js';
 
 class FilterItem extends React.Component {
 
@@ -18,12 +17,24 @@ class FilterItem extends React.Component {
   } 
 
   static propTypes = {
+    defaultForecastList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        town: PropTypes.string.isRequired,
+        region: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        temperatureDay: PropTypes.string.isRequired,
+        temperatureNight: PropTypes.string.isRequired,
+        temperatureWater: PropTypes.string.isRequired,
+        cloudiness: PropTypes.string.isRequired,
+        precipitation: PropTypes.string.isRequired,
+        pressure: PropTypes.number.isRequired,
+        humidity: PropTypes.number.isRequired,
+        windSpeed: PropTypes.number.isRequired,
+      }),
+    ),
     filterID: PropTypes.string.isRequired,
-  }
-
-  componentDidMount = () => {
-    this.props.takeTownsList();
-    this.props.takeRegionsList();
+    autocompleteList: PropTypes.array.isRequired,
   }
 
   filterChange = (event, value) => {
@@ -35,7 +46,7 @@ class FilterItem extends React.Component {
     let filterValue = value.toLowerCase();
     let filterId = this.props.filterID;
 
-    let displayedItems = this.props.filteredItems.filter(el => {
+    let displayedItems = this.props.defaultForecastList.filter(el => {
       let filterVal = (Number(filterId) === 1) ? el.town.toLowerCase() : el.region.toLowerCase();
       return filterVal.includes(filterValue);
     });
@@ -44,10 +55,8 @@ class FilterItem extends React.Component {
   }
 
   render() {
-    let getItems = (Number(this.props.filterID) === 1) ? this.props.towns : this.props.regions;
-    let placeholderText = (Number(this.props.filterID) === 1) ? 'enter city' : (Number(this.props.filterID) === 2) ? 'enter region' : 'enter value';
 
-    getItems = (getItems) ? getItems : [];
+    let placeholderText = (Number(this.props.filterID) === 1) ? 'enter city' : (Number(this.props.filterID) === 2) ? 'enter region' : 'enter value';
 
     return (
       <div className={s.filters__filterWrap}>
@@ -55,7 +64,7 @@ class FilterItem extends React.Component {
           <Autocomplete
           value={this.state.value}
           inputProps={{ className: s.filters__filterItem, placeholder: placeholderText, onChange: this.filterChange}}
-          items={getItems}
+          items={this.props.autocompleteList}
           getItemValue={(item) => item.name}
           shouldItemRender={matchItemToTerm}
           sortItems={sortItems}
@@ -75,13 +84,8 @@ class FilterItem extends React.Component {
 
 export default  connect(
   state => ({
-    filteredItems: state.takeWeatherItems[0],
-    towns: state.takeTownsList[0],
-    regions: state.takeRegionsList[0],
   }),
   dispatch => ({
-    takeRegionsList: (item) => dispatch(getRegionsAutocomplete()),
-    takeTownsList: () => dispatch(getTownsAutocomplete()),
     filterItems: (item) => dispatch({ type: 'FILTER', payload: item })
   })
 )(withStyles(s)(FilterItem));

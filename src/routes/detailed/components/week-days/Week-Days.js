@@ -38,6 +38,7 @@ class WeekDays extends React.Component {
     				image={el.image}
     				temperatureDay={el.temperatureDay}
     				temperatureNight={el.temperatureNight}
+                    weekForecast={this.props.items}
     			/>
     		);
     	});

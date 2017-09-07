@@ -24,25 +24,6 @@ class SelectedDay extends React.Component {
         }),
     };
 
-    static defaultProps = {
-        displayedDate: {
-            cloudiness: '',
-            date: '',
-            dayNumber: 0,
-            humidity: 0,
-            image: '',
-            precipitation: '',
-            pressure: 0, 
-            shortDate: '',
-            temperatureDay: '',
-            temperatureEvening: '',
-            temperatureMorning: '',
-            temperatureNight: '',
-            temperatureWater: '',
-            windSpeed: 0
-        }
-    };
-
     render() {
         return (
             <div className={s.selectedDay}>
